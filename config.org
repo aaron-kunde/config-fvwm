@@ -1,0 +1,3 @@
+:PROPERTIES:
+:header-args:conf-space: :tangle yes :padline no
+:END:
