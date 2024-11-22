@@ -1,3 +1,8 @@
 :PROPERTIES:
-:header-args:conf-space: :tangle yes :padline no
+:header-args:conf-space: :tangle config :padline no :fil
 :END:
+
+#+begin_src conf-space
+  DesktopSize 3x3
+  EdgeResistance 0
+#+end_src
