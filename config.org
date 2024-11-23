@@ -2,7 +2,9 @@
 :header-args:conf-space: :tangle config :padline no :fil
 :END:
 
+* Virtual Desktop
+Use just one Desktop, with a size of 3x3 pages:
 #+begin_src conf-space
   DesktopSize 3x3
-  EdgeResistance 0
 #+end_src
+
