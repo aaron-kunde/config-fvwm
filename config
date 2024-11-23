@@ -2,3 +2,4 @@ DesktopSize 3x3
 DestroyFunc StartFunction
 AddToFunc   StartFunction
 + I Module FvwmPager
+DefaultFont "xft:Sans:antialias=True:size=10

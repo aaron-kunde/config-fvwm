@@ -15,3 +15,9 @@ Start the module /FvwmPager/, on startups and restarts, after FVWM has read its 
   AddToFunc   StartFunction
   + I Module FvwmPager
 #+end_src
+
+* Fonts
+Set the default font:
+#+begin_src conf-space
+  DefaultFont "xft:Sans:antialias=True:size=10
+#+end_src
