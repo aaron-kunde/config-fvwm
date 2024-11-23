@@ -8,3 +8,10 @@ Use just one Desktop, with a size of 3x3 pages:
   DesktopSize 3x3
 #+end_src
 
+* Initialization
+Start the module /FvwmPager/, on startups and restarts, after FVWM has read its config:
+#+begin_src conf-space
+  DestroyFunc StartFunction
+  AddToFunc   StartFunction
+  + I Module FvwmPager
+#+end_src
