@@ -30,3 +30,14 @@ After installing ~brightnessctl~ and ~brightness-udev~, add these keybindings:
   Key XF86MonBrightnessDown A A Exec exec brightnessctl s 10%-
   Key XF86MonBrightnessUp   A A Exec exec brightnessctl s 10%+
 #+end_src
+
+** Enable audio controls
+Add control to mute raise and lower audio playback:
+#+begin_src conf-space
+  Key XF86AudioMute A A Exec exec pactl set-sink-mute \
+      $(pactl get-default-sink) toggle
+  Key XF86AudioLowerVolume A A Exec exec pactl set-sink-volume \
+      $(pactl get-default-sink) -10%
+  Key XF86AudioRaiseVolume A A Exec exec pactl set-sink-volume \
+      $(pactl get-default-sink) +10%
+#+end_src
