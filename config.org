@@ -19,7 +19,7 @@ Start the module /FvwmPager/, on startups and restarts, after FVWM has read its 
 * Fonts
 Set the default font:
 #+begin_src conf-space
-  DefaultFont "xft:Sans:antialias=True:size=10
+  DefaultFont "xft:Sans:antialias=True:size=10"
 #+end_src
 
 * Keyboard Shortcuts
