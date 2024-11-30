@@ -23,3 +23,6 @@ Key KP_Down  A 4 GotoPage  0p  1p
 Key KP_Left  A 4 GotoPage -1p  0p
 Key KP_Right A 4 GotoPage  1p  0p
 Key KP_Up    A 4 GotoPage  0p -1p
+
+Mouse 1 2 A Maximize
+Mouse 1 4 A Iconify

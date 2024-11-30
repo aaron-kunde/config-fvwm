@@ -27,7 +27,7 @@ Set the default font:
   DefaultFont "xft:Sans:antialias=True:size=10"
 #+end_src
 
-* Keyboard Shortcuts
+* Keyboard bindings
 
 ** Enable brightness control
 After installing ~brightnessctl~ and ~brightness-udev~, add these keybindings:
@@ -55,4 +55,11 @@ Page navigation shall be done with the Numpad arrow keys:
   Key KP_Left  A 4 GotoPage -1p  0p
   Key KP_Right A 4 GotoPage  1p  0p
   Key KP_Up    A 4 GotoPage  0p -1p
+#+end_src
+
+* Mouse bindings
+Add buttons to (un-)maximize and (de-)iconify windows:
+#+begin_src conf-space
+  Mouse 1 2 A Maximize
+  Mouse 1 4 A Iconify
 #+end_src
