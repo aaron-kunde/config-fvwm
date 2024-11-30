@@ -1,5 +1,8 @@
 DesktopSize 3x3
 
+EdgeScroll 100 100
+EdgeThickness 1
+
 DestroyFunc StartFunction
 AddToFunc   StartFunction
 + I Module FvwmPager
