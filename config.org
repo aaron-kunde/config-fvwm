@@ -57,6 +57,17 @@ Page navigation shall be done with the Numpad arrow keys:
   Key KP_Up    A 4 GotoPage  0p -1p
 #+end_src
 
+** Window control
+Hitting /Super_L+Up/ maximizes or unmaximizes the current window:
+#+begin_src conf-space
+  Key Up W 4 Maximize
+#+end_src
+
+Hitting /Super_L+Down/ iconifies the current window:
+#+begin_src conf-space
+  Key Down W 4 Iconify
+#+end_src
+
 * Mouse bindings
 Add buttons to (un-)maximize and (de-)iconify windows:
 #+begin_src conf-space
