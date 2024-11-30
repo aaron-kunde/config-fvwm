@@ -74,3 +74,27 @@ Add buttons to (un-)maximize and (de-)iconify windows:
   Mouse 1 2 A Maximize
   Mouse 1 4 A Iconify
 #+end_src
+
+* Menus
+
+** Root menu
+Definition of the root menu:
+#+begin_src conf-space
+  DestroyMenu MenuFvwmRoot
+  AddToMenu   MenuFvwmRoot "Fvwm" Title
+  + "$[gt.XDG &Menu]%icons/apps.png%"    Popup XDGMenu
+  + "&Terminal%icons/terminal.png%"      Exec exec x-terminal-emulator
+  + "" Nop
+  + "Fvwm&Console%icons/terminal.png%"   Module FvwmConsole -terminal \
+    x-terminal-emulator
+  + "$[gt.Cop&y Config]%icons/conf.png%" FvwmScript FvwmScript-ConfirmCopyConfig
+  + "" Nop
+  + "$[gt.&Restart]%icons/restart.png%"  Restart
+  + "$[gt.&Quit]%icons/quit.png%"        Module FvwmScript FvwmScript-ConfirmQuit
+#+end_src
+
+** XDGMenu
+Generate XDGMenu with mini icons:
+#+begin_src conf-space
+  PipeRead "fvwm3-menu-desktop -e --enable-mini-icons"
+#+end_src
