@@ -44,3 +44,12 @@ AddToMenu   MenuFvwmRoot "Fvwm" Title
 + "$[gt.&Quit]%icons/quit.png%"        Module FvwmScript FvwmScript-ConfirmQuit
 
 PipeRead "fvwm3-menu-desktop -e --enable-mini-icons"
+
+Style FvwmPager !Title, !Borders, !Handles, Sticky, WindowListSkip, NeverFocus
+
+DestroyModuleConfig FvwmPager:*
+*FvwmPager: Geometry -0+0
+*FvwmPager: Font None
+*FvwmPager: MiniIcons
+*FvwmPager: Balloons Pager
+*FvwmPager: UseSkipList

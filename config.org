@@ -98,3 +98,22 @@ Generate XDGMenu with mini icons:
 #+begin_src conf-space
   PipeRead "fvwm3-menu-desktop -e --enable-mini-icons"
 #+end_src
+
+* FvwmPager
+1. Putting it on the top right corner
+2. Do not show Desktop labels
+3. Show mini icons of windows
+4. Balloins are shown for un-iconified pager
+5. Do not show windows using the style /WindowListSkip/
+
+#+begin_src conf-space
+  Style FvwmPager !Title, !Borders, !Handles, Sticky, WindowListSkip, NeverFocus
+
+  DestroyModuleConfig FvwmPager:*
+  ,*FvwmPager: Geometry -0+0
+  ,*FvwmPager: Font None
+  ,*FvwmPager: MiniIcons
+  ,*FvwmPager: Balloons Pager
+  ,*FvwmPager: UseSkipList
+#+end_src
+
