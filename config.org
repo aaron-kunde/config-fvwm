@@ -68,6 +68,16 @@ Hitting /Super_L+Down/ iconifies the current window:
   Key Down A 4 Iconify
 #+end_src
 
+
+** Deactivate M-Tab for mc
+Some programms, like Midnight Commander use the combination /M-Tab/. Passing synthetic events to ~xterm~ like it is described on the [[https://www.fvwm.org/Man/fvwm3commands/#_mouse_key_bindings][FVWM3 man page]] leads to further problems and is therefore not the ideal way.
+
+Alternatively the combination /M-Tab/ is deactivated and remapped to /Super_L-Tab/. Furthermore the: 
+#+begin_src conf-space
+  Key Tab A M -
+  Key Tab A 4 WindowList Root c c NoGeometry, SelectOnRelease Super_L
+#+end_src
+
 * Mouse bindings
 Add buttons to (un-)maximize and (de-)iconify windows:
 #+begin_src conf-space
