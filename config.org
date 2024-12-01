@@ -60,12 +60,12 @@ Page navigation shall be done with the Numpad arrow keys:
 ** Window control
 Hitting /Super_L+Up/ maximizes or unmaximizes the current window:
 #+begin_src conf-space
-  Key Up W 4 Maximize
+  Key Up A 4 Maximize
 #+end_src
 
 Hitting /Super_L+Down/ iconifies the current window:
 #+begin_src conf-space
-  Key Down W 4 Iconify
+  Key Down A 4 Iconify
 #+end_src
 
 * Mouse bindings
