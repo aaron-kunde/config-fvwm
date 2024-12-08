@@ -3,6 +3,11 @@ DesktopSize 3x3
 EdgeScroll 100 100
 EdgeThickness 1
 
+DestroyFunc InitFunction
+AddToFunc   InitFunction
++ I Exec exec fvwm3-root \
+  ${FVWM_DATADIR}/default-config/images/background/bg3.png
+
 DestroyFunc StartFunction
 AddToFunc   StartFunction
 + I Module FvwmPager

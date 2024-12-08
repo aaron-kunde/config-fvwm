@@ -14,6 +14,14 @@ Enable changing the viewport by hitting the edges with the mouse:
   EdgeThickness 1
 #+end_src
 * Initialization
+Set a background image on initialization:
+#+begin_src conf-space
+  DestroyFunc InitFunction
+  AddToFunc   InitFunction
+  + I Exec exec fvwm3-root \
+    ${FVWM_DATADIR}/default-config/images/background/bg3.png
+#+end_src
+
 Start the module /FvwmPager/, on startups and restarts, after FVWM has read its config:
 #+begin_src conf-space
   DestroyFunc StartFunction
