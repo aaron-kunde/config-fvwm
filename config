@@ -39,6 +39,8 @@ Key Tab A 4 WindowList Root c c NoGeometry, SelectOnRelease Super_L
 Mouse 1 2 A Maximize
 Mouse 1 4 A Iconify
 
+Mouse 1 I A Iconify False
+
 DestroyMenu MenuFvwmRoot
 AddToMenu   MenuFvwmRoot "Fvwm" Title
 + "$[gt.XDG &Menu]%icons/apps.png%"    Popup XDGMenu

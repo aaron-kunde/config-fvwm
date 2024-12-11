@@ -87,10 +87,15 @@ Alternatively the combination /M-Tab/ is deactivated and remapped to /Super_L-Ta
 #+end_src
 
 * Mouse bindings
-Add buttons to (un-)maximize and (de-)iconify windows:
+Add buttons to window title for (un-)maximize and (de-)iconify windows:
 #+begin_src conf-space
   Mouse 1 2 A Maximize
   Mouse 1 4 A Iconify
+#+end_src
+
+Deiconify iconified windows with a mouse click:
+#+begin_src conf-space
+  Mouse 1 I A Iconify False
 #+end_src
 
 * Menus
