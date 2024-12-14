@@ -3,6 +3,19 @@ DesktopSize 3x3
 EdgeScroll 100 100
 EdgeThickness 1
 
+DestroyFunc ActivateMonitor
+AddToFunc ActivateMonitor
+ + I Exec xrandr --output $0 --auto --primary
+
+DestroyFunc DeactivateMonitor
+AddToFunc DeactivateMonitor
+ + I Exec xrandr --output $0 --off
+ + I Exec xrandr --output eDP-1 --primary
+
+*FvwmEvent: Cmd
+*FvwmEvent: monitor_disabled "DeactivateMonitor DP-1"
+*FvwmEvent: monitor_enabled "ActivateMonitor DP-1"
+
 DestroyFunc InitFunction
 AddToFunc   InitFunction
 + I Exec exec fvwm3-root \
@@ -11,6 +24,7 @@ AddToFunc   InitFunction
 DestroyFunc StartFunction
 AddToFunc   StartFunction
 + I Module FvwmPager
++ I Module FvwmEvent
 
 DefaultFont "xft:Sans:antialias=True:size=10"
 
@@ -51,6 +65,9 @@ AddToMenu   MenuFvwmRoot "Fvwm" Title
 + "Fvwm&Console%icons/terminal.png%"   Module FvwmConsole -terminal \
   x-terminal-emulator
 + "$[gt.Cop&y Config]%icons/conf.png%" FvwmScript FvwmScript-ConfirmCopyConfig
++ "" Nop
++ "&Activate DP-1%icons/run_arrow.png%" ActivateMonitor DP-1
++ "&DeActivate DP-1" DeActivateMonitor DP-1
 + "" Nop
 + "$[gt.&Restart]%icons/restart.png%"  Restart
 + "$[gt.&Quit]%icons/quit.png%"        Module FvwmScript FvwmScript-ConfirmQuit

@@ -13,6 +13,71 @@ Enable changing the viewport by hitting the edges with the mouse:
   EdgeScroll 100 100
   EdgeThickness 1
 #+end_src
+
+* RandR Support
+
+** (De-)Activation of (Dis-)connected monitors
+After a monitor is connected, its status can be verifed by executing:
+#+begin_src shell :results verbatim :wrap example
+  xrandr | grep DP
+#+end_src
+
+It should result in something like:
+#+begin_example
+  eDP-1 connected primary 2048x1152+0+0 (normal left inverted right x axis y axis) 344mm x 194mm
+  DP-1 connected (normal left inverted right x axis y axis)
+  DP-2 disconnected (normal left inverted right x axis y axis)
+  DP-3 disconnected (normal left inverted right x axis y axis)
+  DP-4 disconnected (normal left inverted right x axis y axis)
+#+end_example
+
+After connecting a new monitor, it has to be activated with:
+#+begin_src shell :results none
+  xrandr --output DP-1 --auto
+#+end_src
+
+This leads to
+1. Firing /FvwmEvent/ the event /monitor_enabled/
+2. Execution of /RandRFunc/
+
+Disconnecing a monitor leads to
+1. Executing of /RandRFunc/
+2. Firing FvwmEvent the event /monitor_disabled/
+
+After a monitor has been disconnected, it has to be deactivated, by executing:
+#+begin_src shell :results none
+  xrandr --output DP-1 --off
+#+end_src
+
+*Note*: Deactivating a monitor does not fire any /FvwmEvent/ events, as long as it is still connected. The function /RandRFunc/ and the event /monitor_disabled/ only comes into effect when the monitor has been disconnected. 
+
+Two functions are added:
+1. Activate a monitor as primary monitor:
+   #+begin_src conf-space
+     DestroyFunc ActivateMonitor
+     AddToFunc ActivateMonitor
+      + I Exec xrandr --output $0 --auto --primary
+   #+end_src
+
+   The activated monitor is set as primary monitor, so desktop resolution and /FvwmPager/ can be adjusted, by restarting FVWM.
+
+2. Deactivate a monitor and make the standard monitor the primary monitor again:
+   #+begin_src conf-space
+     DestroyFunc DeactivateMonitor
+     AddToFunc DeactivateMonitor
+      + I Exec xrandr --output $0 --off
+      + I Exec xrandr --output eDP-1 --primary
+   #+end_src
+
+Both functions are configured to (de-)activate /DP-1/, if a monitor is connected:
+#+begin_src conf-space
+  ,*FvwmEvent: Cmd
+  ,*FvwmEvent: monitor_disabled "DeactivateMonitor DP-1"
+  ,*FvwmEvent: monitor_enabled "ActivateMonitor DP-1"
+#+end_src
+
+*Note*: After FVWM has been (re)started and a monitor is connected the first time, neither /RandRFunc/ is executed nor /FvwmEvent/ events are fired. Therefore /ActivateMonitor/ has to be executed manually once. After that, the automatic (de-)activation of /DP-1/ works.
+
 * Initialization
 Set a background image on initialization:
 #+begin_src conf-space
@@ -22,11 +87,12 @@ Set a background image on initialization:
     ${FVWM_DATADIR}/default-config/images/background/bg3.png
 #+end_src
 
-Start the module /FvwmPager/, on startups and restarts, after FVWM has read its config:
+Start the modules /FvwmPager/ and /FvwmEvent/, on startups and restarts, after FVWM has read its config:
 #+begin_src conf-space
   DestroyFunc StartFunction
   AddToFunc   StartFunction
   + I Module FvwmPager
+  + I Module FvwmEvent
 #+end_src
 
 * Fonts
@@ -117,6 +183,9 @@ Definition of the root menu:
   + "Fvwm&Console%icons/terminal.png%"   Module FvwmConsole -terminal \
     x-terminal-emulator
   + "$[gt.Cop&y Config]%icons/conf.png%" FvwmScript FvwmScript-ConfirmCopyConfig
+  + "" Nop
+  + "&Activate DP-1%icons/run_arrow.png%" ActivateMonitor DP-1
+  + "&DeActivate DP-1" DeActivateMonitor DP-1
   + "" Nop
   + "$[gt.&Restart]%icons/restart.png%"  Restart
   + "$[gt.&Quit]%icons/quit.png%"        Module FvwmScript FvwmScript-ConfirmQuit
