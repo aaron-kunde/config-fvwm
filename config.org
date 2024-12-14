@@ -98,6 +98,12 @@ Deiconify iconified windows with a mouse click:
   Mouse 1 I A Iconify False
 #+end_src
 
+* Focus policy
+Windows should keep the focus until the mouse pointer hits another window and not the root window:
+#+begin_src conf-space
+  Style * SloppyFocus
+#+end_src
+
 * Menus
 
 ** Root menu

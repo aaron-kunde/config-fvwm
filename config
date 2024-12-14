@@ -41,6 +41,8 @@ Mouse 1 4 A Iconify
 
 Mouse 1 I A Iconify False
 
+Style * SloppyFocus
+
 DestroyMenu MenuFvwmRoot
 AddToMenu   MenuFvwmRoot "Fvwm" Title
 + "$[gt.XDG &Menu]%icons/apps.png%"    Popup XDGMenu
