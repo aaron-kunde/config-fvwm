@@ -136,15 +136,54 @@ Page navigation is done with the Numpad arrow keys or /H/, /J/, /K/ and /L/ whil
 #+end_src
 
 ** Window control
-Hitting /Super_L+Up/ maximizes or unmaximizes the current window:
+Opens the [[* Menu for window operations][menu for window operations]] on the current window with /Super_L+O/:
+#+begin_src conf-space
+  Key O A 4 Menu MenuWindowOps
+#+end_src
+
+Opens the [[* Menu for sending windows to pages][menu for sending windows to pages]] on the current window with /Super_L+P/:
+#+begin_src conf-space
+  Key P A 4 Menu MenuWindowOps
+#+end_src
+
+Move the current window with /Super_L+M/:
+#+begin_src conf-space
+  Key M A 4 Move
+#+end_src
+
+Move the current window animated in a give direction with /Super_L+Shift+<Arrow-Key>/ until it hits another window or a screen boundary:
+#+begin_src conf-space
+  Key Up A 4S AnimatedMove shuffle Up
+  Key Down A 4S AnimatedMove shuffle Down
+  Key Left A 4S AnimatedMove shuffle Left
+  Key Right A 4S AnimatedMove shuffle Right
+#+end_src
+
+Resize the current window with /Super_L+G/:
+#+begin_src conf-space
+  Key G A 4 Resize
+#+end_src
+
+Iconifies or deiconifies the current window with /Super_L+Down/:
+#+begin_src conf-space
+  Key Down A 4 Iconify
+#+end_src
+
+Maximizes or unmaximizes the current window with /Super_L+Up/:
 #+begin_src conf-space
   Key Up A 4 Maximize
 #+end_src
 
-Hitting /Super_L+Down/ iconifies the current window:
+Raise the current window in its layer with /Super_L+R/
 #+begin_src conf-space
-  Key Down A 4 Iconify
+  Key R A 4 Raise
 #+end_src
+
+Stick or unstick the current window with /Super_L+G/:
+#+begin_src conf-space
+  Key S A 4 Stick
+#+end_src
+
 
 
 ** Deactivate M-Tab for mc
@@ -159,6 +198,7 @@ Alternatively the combination /M-Tab/ is deactivated and remapped to /Super_L-Ta
 * Mouse bindings
 Add buttons to window title for (un-)maximize and (de-)iconify windows:
 #+begin_src conf-space
+  Mouse 1 1 A Menu MenuWindowOps Delete
   Mouse 1 2 A Maximize
   Mouse 1 4 A Iconify
 #+end_src
@@ -199,6 +239,52 @@ Definition of the root menu:
 Generate XDGMenu with mini icons:
 #+begin_src conf-space
   PipeRead "fvwm3-menu-desktop -e --enable-mini-icons"
+#+end_src
+
+** Menu for window operations
+Adding a menu with several window operations:
+#+begin_src conf-space
+  DestroyMenu MenuWindowOps
+  AddToMenu   MenuWindowOps
+   + "$[gt.&Identify]%icons/info.png%"		 Module FvwmIdent
+   + ""						 Nop
+   + "$[gt.&Move]%icons/win/move.png%"		 Move
+   + "$[gt.Send To &Page]%icons/win/sendto.png%"	 Popup MenuSendToPage
+   + ""						 Nop
+   + "$[gt.Re&size]%icons/win/resize.png%"	 Resize
+   + "$[gt.(De)Iconify]%icons/win/iconify.png%"	 Iconify
+   + "$[gt.(Un)Maximize]%icons/win/max.png%"	 Maximize
+   + ""						 Nop
+   + "$[gt.&Raise]%icons/win/raise.png%"		 Raise
+   + "$[gt.&Lower]%icons/win/lower.png%"		 Lower
+   + ""						 Nop
+   + "$[gt.Stays On &Top]%icons/win/top.png%"	 Pick (CirculateHit) Layer 0 6
+   + "$[gt.Stays &Put]%icons/win/stays.png%"	 Pick (CirculateHit) Layer 0 4
+   + "$[gt.Stays On &Bottom]%icons/win/bottom.png%" Pick (CirculateHit) Layer 0 2
+   + ""						 Nop
+   + "$[gt.(Un)&Sticky]%icons/win/sticky.png%"	 Stick
+   + "$[gt.(Un)S&hade]%icons/win/shade.png%"	 WindowShade
+   + "$[gt.Re&fresh Window]icons/refresh.png%"	 RefreshWindow
+   + ""						 Nop
+   + "$[gt.&Close]%icons/win/close.png%"		 Close
+   + "$[gt.&Delete]%icons/win/done.png%"		 Delete
+   + "$[gt.&Destroy]%icons/win/destroy.png%"	 Destroy
+#+end_src
+
+*** Menu for sending windows to pages
+The window operation menu above uses a submenu for sending windows to a specific page:
+#+begin_src conf-space
+  DestroyMenu MenuSendToPage
+  AddToMenu   MenuSendToPage
+   + "$[gt.Page] &1 (0,0)" MoveToPage 0 0
+   + "$[gt.Page] &2 (1,0)" MoveToPage 1 0
+   + "$[gt.Page] &3 (2,0)" MoveToPage 2 0
+   + "$[gt.Page] &4 (0,1)" MoveToPage 0 1
+   + "$[gt.Page] &5 (1,1)" MoveToPage 1 1
+   + "$[gt.Page] &6 (2,1)" MoveToPage 2 1
+   + "$[gt.Page] &7 (0,2)" MoveToPage 0 2
+   + "$[gt.Page] &8 (1,2)" MoveToPage 1 2
+   + "$[gt.Page] &9 (2,2)" MoveToPage 2 2
 #+end_src
 
 * FvwmPager
