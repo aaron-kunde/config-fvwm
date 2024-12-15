@@ -28,6 +28,8 @@ AddToFunc   StartFunction
 
 DefaultFont "xft:Sans:antialias=True:size=10"
 
+Key F1 A 4  PopUp MenuFvwmRoot
+
 Key XF86MonBrightnessDown A A Exec exec brightnessctl s 10%-
 Key XF86MonBrightnessUp   A A Exec exec brightnessctl s 10%+
 

@@ -103,6 +103,12 @@ Set the default font:
 
 * Keyboard bindings
 
+** Invoke the root menu
+Invoke the [[* Root menu][root menu]] with /Super_L+F1/
+#+begin_src conf-space
+  Key F1 A 4  PopUp MenuFvwmRoot
+#+end_src
+
 ** Enable brightness control
 After installing ~brightnessctl~ and ~brightness-udev~, add these keybindings:
 #+begin_src conf-space
