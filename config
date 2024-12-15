@@ -81,18 +81,23 @@ Style * SloppyFocus
 
 DestroyMenu MenuFvwmRoot
 AddToMenu   MenuFvwmRoot "Fvwm" Title
-+ "$[gt.XDG &Menu]%icons/apps.png%"    Popup XDGMenu
-+ "&Terminal%icons/terminal.png%"      Exec exec x-terminal-emulator
-+ "" Nop
-+ "Fvwm&Console%icons/terminal.png%"   Module FvwmConsole -terminal \
++ "$[gt.XDG &Menu]%icons/apps.png%"	Popup XDGMenu
++ "&Terminal%icons/terminal.png%"	Exec exec x-terminal-emulator
++ ""					Nop
++ "Fvwm&Console%icons/terminal.png%"	Module FvwmConsole -terminal \
   x-terminal-emulator
-+ "$[gt.Cop&y Config]%icons/conf.png%" FvwmScript FvwmScript-ConfirmCopyConfig
-+ "" Nop
++ "$[gt.Cop&y Config]%icons/conf.png%"	FvwmScript \
+  FvwmScript-ConfirmCopyConfig
++ ""					Nop
 + "&Activate DP-1%icons/run_arrow.png%" ActivateMonitor DP-1
-+ "&DeActivate DP-1" DeActivateMonitor DP-1
-+ "" Nop
-+ "$[gt.&Restart]%icons/restart.png%"  Restart
-+ "$[gt.&Quit]%icons/quit.png%"        Module FvwmScript FvwmScript-ConfirmQuit
++ "&DeActivate DP-1"			DeActivateMonitor DP-1
++ ""					Nop
++ "$[gt.Re&fresh]%icons/refresh.png%"	Refresh
++ "$[gt.&Restart]%icons/restart.png%"	Restart
+
++ "$[gt.&Quit]%icons/quit.png%"	Module FvwmScript \
+  FvwmScript-ConfirmQuit
++ "$[gt.&Hibernate]"			Exec exec systemctl hibernate
 
 PipeRead "fvwm3-menu-desktop -e --enable-mini-icons"
 
