@@ -38,9 +38,13 @@ Key XF86AudioLowerVolume A A Exec exec pactl set-sink-volume \
 Key XF86AudioRaiseVolume A A Exec exec pactl set-sink-volume \
     $(pactl get-default-sink) +10%
 
+Key J	     A 4 GotoPage  0p  1p
 Key KP_Down  A 4 GotoPage  0p  1p
+Key H	     A 4 GotoPage -1p  0p
 Key KP_Left  A 4 GotoPage -1p  0p
+Key L	     A 4 GotoPage  1p  0p
 Key KP_Right A 4 GotoPage  1p  0p
+Key K        A 4 GotoPage  0p -1p
 Key KP_Up    A 4 GotoPage  0p -1p
 
 Key Up A 4 Maximize
