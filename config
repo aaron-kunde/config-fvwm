@@ -147,6 +147,8 @@ Style * SloppyFocus
 
 Style JDownloader* FPLenient
 
+Style steam !Title
+
 Style FvwmPager !Title, !Borders, !Handles, Sticky, WindowListSkip, NeverFocus
 
 DestroyModuleConfig FvwmPager:*

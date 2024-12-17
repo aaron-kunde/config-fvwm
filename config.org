@@ -314,6 +314,14 @@ Windows should keep the focus until the mouse pointer hits another window and no
   Style JDownloader* FPLenient
 #+end_src
 
+** Title bar
+
+*** No Ttitle for Steam
+Windows with class /steam/ do not need a title bar because they have their own:
+#+begin_src conf-space
+  Style steam !Title
+#+end_src
+
 * FvwmPager
 1. Putting it on the top right corner
 2. Do not show Desktop labels
