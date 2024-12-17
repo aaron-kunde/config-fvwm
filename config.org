@@ -244,8 +244,7 @@ Definition of the root menu:
   + ""					Nop
   + "$[gt.Re&fresh]%icons/refresh.png%"	Refresh
   + "$[gt.&Restart]%icons/restart.png%"	Restart
-
-  + "$[gt.&Quit]%icons/quit.png%"	Module FvwmScript \
+  + "$[gt.&Quit]%icons/quit.png%"		Module FvwmScript \
     FvwmScript-ConfirmQuit
   + "$[gt.&Hibernate]"			Exec exec systemctl hibernate
 #+end_src
@@ -261,29 +260,29 @@ Adding a menu with several window operations:
 #+begin_src conf-space
   DestroyMenu MenuWindowOps
   AddToMenu   MenuWindowOps
-   + "$[gt.&Identify]%icons/info.png%"		 Module FvwmIdent
-   + ""						 Nop
-   + "$[gt.&Move]%icons/win/move.png%"		 Move
-   + "$[gt.Send To &Page]%icons/win/sendto.png%"	 Popup MenuSendToPage
-   + ""						 Nop
-   + "$[gt.Re&size]%icons/win/resize.png%"	 Resize
-   + "$[gt.(De)Iconify]%icons/win/iconify.png%"	 Iconify
-   + "$[gt.(Un)Maximize]%icons/win/max.png%"	 Maximize
-   + ""						 Nop
-   + "$[gt.&Raise]%icons/win/raise.png%"		 Raise
-   + "$[gt.&Lower]%icons/win/lower.png%"		 Lower
-   + ""						 Nop
-   + "$[gt.Stays On &Top]%icons/win/top.png%"	 Pick (CirculateHit) Layer 0 6
-   + "$[gt.Stays &Put]%icons/win/stays.png%"	 Pick (CirculateHit) Layer 0 4
+   + "$[gt.&Identify]%icons/info.png%"		  Module FvwmIdent
+   + ""						  Nop
+   + "$[gt.&Move]%icons/win/move.png%"		  Move
+   + "$[gt.Send To &Page]%icons/win/sendto.png%"	  Popup MenuSendToPage
+   + ""						  Nop
+   + "$[gt.Re&size]%icons/win/resize.png%"	  Resize
+   + "$[gt.(De)Iconify]%icons/win/iconify.png%"	  Iconify
+   + "$[gt.(Un)Maximize]%icons/win/max.png%"	  Maximize
+   + ""						  Nop
+   + "$[gt.&Raise]%icons/win/raise.png%"		  Raise
+   + "$[gt.&Lower]%icons/win/lower.png%"		  Lower
+   + ""						  Nop
+   + "$[gt.Stays On &Top]%icons/win/top.png%"	  Pick (CirculateHit) Layer 0 6
+   + "$[gt.Stays &Put]%icons/win/stays.png%"	  Pick (CirculateHit) Layer 0 4
    + "$[gt.Stays On &Bottom]%icons/win/bottom.png%" Pick (CirculateHit) Layer 0 2
-   + ""						 Nop
-   + "$[gt.(Un)&Sticky]%icons/win/sticky.png%"	 Stick
-   + "$[gt.(Un)S&hade]%icons/win/shade.png%"	 WindowShade
-   + "$[gt.Re&fresh Window]icons/refresh.png%"	 RefreshWindow
-   + ""						 Nop
-   + "$[gt.&Close]%icons/win/close.png%"		 Close
-   + "$[gt.&Delete]%icons/win/done.png%"		 Delete
-   + "$[gt.&Destroy]%icons/win/destroy.png%"	 Destroy
+   + ""						  Nop
+   + "$[gt.(Un)&Sticky]%icons/win/sticky.png%"	  Stick
+   + "$[gt.(Un)S&hade]%icons/win/shade.png%"	  WindowShade
+   + "$[gt.Re&fresh Window]%icons/refresh.png%"	  RefreshWindow
+   + ""						  Nop
+   + "$[gt.&Close]%icons/win/close.png%"		  Close
+   + "$[gt.&Delete]%icons/win/done.png%"		  Delete
+   + "$[gt.&Destroy]%icons/win/destroy.png%"	  Destroy
 #+end_src
 
 *** Menu for sending windows to pages
