@@ -301,6 +301,22 @@ The window operation menu above uses a submenu for sending windows to a specific
    + "$[gt.Page] &9 (2,2)" MoveToPage 2 2
 #+end_src
 
+** Menu Styles
+Menus have a pseudo transparent background. They have no 3D borders and no 3D hilighting. The foreground and background of the selected menu item is hilighted using the /ActiveColorset/. The title is not hilighted. Submenus are shifted in an animated way. The triangles for submenus are solid and use the Foreground colour:
+#+begin_src conf-space
+  MenuStyle * Translucent 75
+  MenuStyle * Borderwidth 0, Hilight3dOff
+  MenuStyle * ActiveFore, HilightBack
+  MenuStyle * !HilightTitleBack
+  MenuStyle * Animation
+  MenuStyle * TrianglesSolid, TrianglesUseFore
+#+end_src
+
+Menus have no side picture, so no definition for this is necessary. The hilighted area of a menu item spans around the whole item. After a 5 pixel space either the mini icon, if defined, or the label is shown. Between the label and the minicon is a 5 pixel space. If the item leads to a submenu the triangle is shown with a space of 5 pixels to the label. The item ends with a 5 pixel space either after the label or the submenu triangle:
+#+begin_src conf-space
+  MenuStyle * ItemFormat "%.5|%5.i%5.5l%.5>%5.|"
+#+end_src
+
 ** Focus policy
 Windows should keep the focus until the mouse pointer hits another window and not the root window:
 #+begin_src conf-space

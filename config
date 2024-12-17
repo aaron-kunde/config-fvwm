@@ -142,6 +142,15 @@ AddToMenu   MenuSendToPage
  + "$[gt.Page] &8 (1,2)" MoveToPage 1 2
  + "$[gt.Page] &9 (2,2)" MoveToPage 2 2
 
+MenuStyle * Translucent 75
+MenuStyle * Borderwidth 0, Hilight3dOff
+MenuStyle * ActiveFore, HilightBack
+MenuStyle * !HilightTitleBack
+MenuStyle * Animation
+MenuStyle * TrianglesSolid, TrianglesUseFore
+
+MenuStyle * ItemFormat "%.5|%5.i%5.5l%.5>%5.|"
+
 Style * SloppyFocus
 
 Style JDownloader* FPLenient
