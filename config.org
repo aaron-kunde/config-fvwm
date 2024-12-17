@@ -117,14 +117,24 @@ After installing ~brightnessctl~ and ~brightness-udev~, add these keybindings:
 #+end_src
 
 ** Enable audio controls
-Add control to mute raise and lower audio playback:
+(Un-)mute audio playback with the respecting multimedia key:
 #+begin_src conf-space
   Key XF86AudioMute A A Exec exec pactl set-sink-mute \
       $(pactl get-default-sink) toggle
+#+end_src
+
+Raise and lower playback volume with the respecting multimedia keys:
+#+begin_src conf-space
   Key XF86AudioLowerVolume A A Exec exec pactl set-sink-volume \
       $(pactl get-default-sink) -10%
   Key XF86AudioRaiseVolume A A Exec exec pactl set-sink-volume \
       $(pactl get-default-sink) +10%
+#+end_src
+
+(Un-)mute the microphone with the respecting multimedia key:
+#+begin_src conf-space
+  Key XF86AudioMicMute A A Exec exec pactl set-source-mute \
+      $(pactl get-default-source) toggle
 #+end_src
 
 ** Page navigation

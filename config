@@ -35,10 +35,14 @@ Key XF86MonBrightnessUp   A A Exec exec brightnessctl s 10%+
 
 Key XF86AudioMute A A Exec exec pactl set-sink-mute \
     $(pactl get-default-sink) toggle
+
 Key XF86AudioLowerVolume A A Exec exec pactl set-sink-volume \
     $(pactl get-default-sink) -10%
 Key XF86AudioRaiseVolume A A Exec exec pactl set-sink-volume \
     $(pactl get-default-sink) +10%
+
+Key XF86AudioMicMute A A Exec exec pactl set-source-mute \
+    $(pactl get-default-source) toggle
 
 Key J	     A 4 GotoPage  0p  1p
 Key KP_Down  A 4 GotoPage  0p  1p
