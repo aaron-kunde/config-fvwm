@@ -224,12 +224,6 @@ Deiconify iconified windows with a mouse click:
   Mouse 1 I A Iconify False
 #+end_src
 
-* Focus policy
-Windows should keep the focus until the mouse pointer hits another window and not the root window:
-#+begin_src conf-space
-  Style * SloppyFocus
-#+end_src
-
 * Menus
 
 ** Root menu
@@ -306,6 +300,18 @@ The window operation menu above uses a submenu for sending windows to a specific
    + "$[gt.Page] &7 (0,2)" MoveToPage 0 2
    + "$[gt.Page] &8 (1,2)" MoveToPage 1 2
    + "$[gt.Page] &9 (2,2)" MoveToPage 2 2
+#+end_src
+
+** Focus policy
+Windows should keep the focus until the mouse pointer hits another window and not the root window:
+#+begin_src conf-space
+  Style * SloppyFocus
+#+end_src
+
+*** JDownloader
+/JDownloader/ sets the WM hint property ~input=false~, but does not take the focus, if it is selected via /WindowList/ from another page. To fix this, /JDownloader/ windows are given the lenient focus style:
+#+begin_src conf-space
+  Style JDownloader* FPLenient
 #+end_src
 
 * FvwmPager

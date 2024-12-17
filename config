@@ -83,8 +83,6 @@ Mouse 1 4 A Iconify
 
 Mouse 1 I A Iconify False
 
-Style * SloppyFocus
-
 DestroyMenu MenuFvwmRoot
 AddToMenu   MenuFvwmRoot "Fvwm" Title
 + "$[gt.XDG &Menu]%icons/apps.png%"	Popup XDGMenu
@@ -144,6 +142,10 @@ AddToMenu   MenuSendToPage
  + "$[gt.Page] &7 (0,2)" MoveToPage 0 2
  + "$[gt.Page] &8 (1,2)" MoveToPage 1 2
  + "$[gt.Page] &9 (2,2)" MoveToPage 2 2
+
+Style * SloppyFocus
+
+Style JDownloader* FPLenient
 
 Style FvwmPager !Title, !Borders, !Handles, Sticky, WindowListSkip, NeverFocus
 
