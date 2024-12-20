@@ -68,7 +68,12 @@ Key G A 4 Resize
 
 Key Down A 4 Iconify
 
-Key Up A 4 Maximize
+DestroyFunc Maximize-and-Raise
+AddToFunc Maximize-and-Raise
++ I Maximize
++ I Raise
+
+Key Up A 4 Maximize-and-Raise
 
 Key R A 4 Raise
 
@@ -113,7 +118,7 @@ AddToMenu   MenuWindowOps
  + ""						  Nop
  + "$[gt.Re&size]%icons/win/resize.png%"	  Resize
  + "$[gt.(De)Iconify]%icons/win/iconify.png%"	  Iconify
- + "$[gt.(Un)Maximize]%icons/win/max.png%"	  Maximize
+ + "$[gt.(Un)Maximize]%icons/win/max.png%"	  Maximize-and-Raise
  + ""						  Nop
  + "$[gt.&Raise]%icons/win/raise.png%"		  Raise
  + "$[gt.&Lower]%icons/win/lower.png%"		  Lower

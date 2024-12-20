@@ -185,9 +185,17 @@ Iconifies or deiconifies the current window with /Super_L+Down/:
   Key Down A 4 Iconify
 #+end_src
 
+Maximized windows should also be raised, to have them not maximized behind other windows of the same layer:
+#+begin_src conf-space
+  DestroyFunc Maximize-and-Raise
+  AddToFunc Maximize-and-Raise
+  + I Maximize
+  + I Raise
+#+end_src
+
 Maximizes or unmaximizes the current window with /Super_L+Up/:
 #+begin_src conf-space
-  Key Up A 4 Maximize
+  Key Up A 4 Maximize-and-Raise
 #+end_src
 
 Raise the current window in its layer with /Super_L+R/
@@ -267,7 +275,7 @@ Adding a menu with several window operations:
    + ""						  Nop
    + "$[gt.Re&size]%icons/win/resize.png%"	  Resize
    + "$[gt.(De)Iconify]%icons/win/iconify.png%"	  Iconify
-   + "$[gt.(Un)Maximize]%icons/win/max.png%"	  Maximize
+   + "$[gt.(Un)Maximize]%icons/win/max.png%"	  Maximize-and-Raise
    + ""						  Nop
    + "$[gt.&Raise]%icons/win/raise.png%"		  Raise
    + "$[gt.&Lower]%icons/win/lower.png%"		  Lower
