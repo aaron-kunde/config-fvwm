@@ -331,6 +331,8 @@ Menus have no side picture, so no definition for this is necessary. The hilighte
   MenuStyle * ItemFormat "%.5|%5.i%5.5l%.5>%5.|"
 #+end_src
 
+* Style
+
 ** Focus policy
 Windows should keep the focus until the mouse pointer hits another window and not the root window:
 #+begin_src conf-space
@@ -341,6 +343,27 @@ Windows should keep the focus until the mouse pointer hits another window and no
 /JDownloader/ sets the WM hint property ~input=false~, but does not take the focus, if it is selected via /WindowList/ from another page. To fix this, /JDownloader/ windows are given the lenient focus style:
 #+begin_src conf-space
   Style JDownloader* FPLenient
+#+end_src
+
+** Window title
+
+*** No Ttitle for Steam applications
+Windows with class /steam/ do not need a title bar because they have their own:
+#+begin_src conf-space
+  Style steam !Title
+#+end_src
+
+** Title buttons
+Use style /MwmButtons/ to have maximized windows display a different button as button 2:
+#+begin_src conf-space
+  Style * MwmButtons
+#+end_src
+
+** Borders
+Do not show handles and reduce set the border width to 2 pixels:
+#+begin_src conf-space
+  Style * !Handles
+  Style * BorderWidth 2
 #+end_src
 
 ** Icons
@@ -371,36 +394,16 @@ Setting the icons and styles for specific applications:
   Style Emacs IconOverride, Icon /usr/share/icons/hicolor/scalable/apps/emacs.svg
 #+end_src
 
-** Title buttons
-Use style /MwmButtons/ to have maximized windows display a different button as button 2:
-#+begin_src conf-space
-  Style * MwmButtons
-#+end_src
-
-** Borders
-Do not show handles and reduce set the border width to 2 pixels:
-#+begin_src conf-space
-  Style * !Handles
-  Style * BorderWidth 2
-#+end_src
-
 ** Resizing
 Resize windows with visible content:
 #+begin_src conf-space
   Style * ResizeOpaque
 #+end_src
 
-#+begin_src conf-space
-#+end_src
 
 #+end_src
 
-** Title bar
 
-*** No Ttitle for Steam
-Windows with class /steam/ do not need a title bar because they have their own:
-#+begin_src conf-space
-  Style steam !Title
 #+end_src
 
 * FvwmPager

@@ -162,6 +162,13 @@ Style * SloppyFocus
 
 Style JDownloader* FPLenient
 
+Style steam !Title
+
+Style * MwmButtons
+
+Style * !Handles
+Style * BorderWidth 2
+
 Style * IconSize 64 64
 
 Style * IconBox 0 0 -0 -0,\
@@ -174,14 +181,7 @@ Style * IconBackgroundRelief 0
 
 Style Emacs IconOverride, Icon /usr/share/icons/hicolor/scalable/apps/emacs.svg
 
-Style * MwmButtons
-
-Style * !Handles
-Style * BorderWidth 2
-
 Style * ResizeOpaque
-
-Style steam !Title
 
 Style FvwmPager !Title, !Borders, !Handles
 Style FvwmPager Sticky
