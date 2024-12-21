@@ -171,6 +171,8 @@ Style Emacs IconOverride, Icon /usr/share/icons/hicolor/scalable/apps/emacs.svg
 
 Style * MwmButtons
 
+Style * !Handles,\
+      BorderWidth 2
 
 Style * ResizeOpaque
 
