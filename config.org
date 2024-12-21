@@ -185,6 +185,11 @@ Iconifies or deiconifies the current window with /Super_L+Down/:
   Key Down A 4 Iconify
 #+end_src
 
+Iconifies all iconifiable windows on the current page with /Super_L+D/:
+#+begin_src conf-space
+  Key D A 4 All (Iconifiable, CurrentPage) Iconify True
+#+end_src
+
 Maximized windows should also be raised, to have them not maximized behind other windows of the same layer:
 #+begin_src conf-space
   DestroyFunc Maximize-and-Raise
@@ -346,15 +351,28 @@ Windows with class /steam/ do not need a title bar because they have their own:
 #+end_src
 
 * FvwmPager
-1. Putting it on the top right corner
-2. Do not show Desktop labels
-3. Show mini icons of windows
-4. Balloins are shown for un-iconified pager
-5. Do not show windows using the style /WindowListSkip/
 
+** Style
+The pager is styled as follows:
+1. Not having titles, borders or handles
+2. Stickiness accross all pages and desks
+3. Not appearing in the *WindowList*
+4. Not being iconifiable, to prevent being iconified e.g by pressing /Super_L+D/
 #+begin_src conf-space
-  Style FvwmPager !Title, !Borders, !Handles, Sticky, WindowListSkip, NeverFocus
+  Style FvwmPager !Title, !Borders, !Handles,\
+	Sticky,\
+	WindowListSkip,\
+	!Iconifiable
+#+end_src
 
+** Configuration
+The pager is configured as follows
+1. Place the pager into the top right corner
+2. Do not show desktop labels
+3. Show mini icons of windows
+4. Ballons are shown for un-iconified pager
+5. Do not show windows using the style /WindowListSkip/
+#+begin_src conf-space
   DestroyModuleConfig FvwmPager:*
   ,*FvwmPager: Geometry -0+0
   ,*FvwmPager: Font None
