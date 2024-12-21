@@ -171,18 +171,18 @@ Style Emacs IconOverride, Icon /usr/share/icons/hicolor/scalable/apps/emacs.svg
 
 Style * MwmButtons
 
-Style * !Handles,\
-      BorderWidth 2
+Style * !Handles
+Style * BorderWidth 2
 
 Style * ResizeOpaque
 
 Style steam !Title
 
-Style FvwmPager !Title, !Borders, !Handles,\
-      Sticky,\
-      WindowListSkip,\
-      !Iconifiable,\
-      FixedPosition
+Style FvwmPager !Title, !Borders, !Handles
+Style FvwmPager Sticky
+Style FvwmPager WindowListSkip
+Style FvwmPager !Iconifiable
+Style FvwmPager FixedPosition
 
 DestroyModuleConfig FvwmPager:*
 *FvwmPager: Geometry -0+0

@@ -366,8 +366,8 @@ Use style /MwmButtons/ to have maximized windows display a different button as b
 ** Borders
 Do not show handles and reduce set the border width to 2 pixels:
 #+begin_src conf-space
-  Style * !Handles,\
-	BorderWidth 2
+  Style * !Handles
+  Style * BorderWidth 2
 #+end_src
 
 ** Resizing
@@ -399,11 +399,11 @@ The pager is styled as follows:
 4. Not being iconifiable, to prevent being iconified e.g by pressing /Super_L+D/
 5. Make the position fixed, to prevent relocation
 #+begin_src conf-space
-  Style FvwmPager !Title, !Borders, !Handles,\
-	Sticky,\
-	WindowListSkip,\
-	!Iconifiable,\
-	FixedPosition
+  Style FvwmPager !Title, !Borders, !Handles
+  Style FvwmPager Sticky
+  Style FvwmPager WindowListSkip
+  Style FvwmPager !Iconifiable
+  Style FvwmPager FixedPosition
 #+end_src
 
 ** Configuration
