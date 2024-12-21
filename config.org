@@ -110,20 +110,22 @@ Invoke the [[* Root menu][root menu]] with /Super_L+F1/
 #+end_src
 
 ** Enable brightness control
-After installing ~brightnessctl~ and ~brightness-udev~, add these keybindings:
+After installing ~brightnessctl~ and ~brightness-udev~, use these keybindings to increase or decrease the screen brightnesss with the respecting keys:
 #+begin_src conf-space
   Key XF86MonBrightnessDown A A Exec exec brightnessctl s 10%-
   Key XF86MonBrightnessUp   A A Exec exec brightnessctl s 10%+
 #+end_src
 
 ** Enable audio controls
-(Un-)mute audio playback with the respecting multimedia key:
+After installing ~pulseaudio-utils~, use the following keybindings for the respecting multimedia key:
+
+(Un-)mute audio playback:
 #+begin_src conf-space
   Key XF86AudioMute A A Exec exec pactl set-sink-mute \
       $(pactl get-default-sink) toggle
 #+end_src
 
-Raise and lower playback volume with the respecting multimedia keys:
+Raise and lower playback volume:
 #+begin_src conf-space
   Key XF86AudioLowerVolume A A Exec exec pactl set-sink-volume \
       $(pactl get-default-sink) -10%
@@ -131,14 +133,13 @@ Raise and lower playback volume with the respecting multimedia keys:
       $(pactl get-default-sink) +10%
 #+end_src
 
-(Un-)mute the microphone with the respecting multimedia key:
+(Un-)mute the microphone:
 #+begin_src conf-space
   Key XF86AudioMicMute A A Exec exec pactl set-source-mute \
       $(pactl get-default-source) toggle
 #+end_src
 
 ** Page navigation
-
 Page navigation is done with the Numpad arrow keys or /H/, /J/, /K/ and /L/ while pressing /Super_L/:
 #+begin_src conf-space
   Key J	     A 4 GotoPage  0p  1p
@@ -151,7 +152,7 @@ Page navigation is done with the Numpad arrow keys or /H/, /J/, /K/ and /L/ whil
   Key KP_Up    A 4 GotoPage  0p -1p
 #+end_src
 
-** Window control
+** Window controls
 Opens the [[* Menu for window operations][menu for window operations]] on the current window with /Super_L+O/:
 #+begin_src conf-space
   Key O A 4 Menu MenuWindowOps
@@ -167,7 +168,7 @@ Move the current window with /Super_L+M/:
   Key M A 4 Move
 #+end_src
 
-Move the current window animated in a give direction with /Super_L+Shift+<Arrow-Key>/ until it hits another window or a screen boundary:
+Move the current window in an animated way in a give direction with /Super_L+Shift+<Arrow-Key>/ until it hits another window or a screen boundary:
 #+begin_src conf-space
   Key Up A 4S AnimatedMove shuffle Up
   Key Down A 4S AnimatedMove shuffle Down
@@ -203,7 +204,7 @@ Maximizes or unmaximizes the current window with /Super_L+Up/:
   Key Up A 4 Maximize-and-Raise
 #+end_src
 
-Raise the current window in its layer with /Super_L+R/
+Raise the current window in its layer with /Super_L+R/:
 #+begin_src conf-space
   Key R A 4 Raise
 #+end_src
