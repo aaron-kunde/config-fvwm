@@ -357,6 +357,12 @@ Setting the icons and styles for specific applications:
   Style Emacs IconOverride, Icon /usr/share/icons/hicolor/scalable/apps/emacs.svg
 #+end_src
 
+** Title buttons
+Use style /MwmButtons/ to have maximized windows display a different button as button 2:
+#+begin_src conf-space
+  Style * MwmButtons
+#+end_src
+
 ** Resizing
 Resize windows with visible content:
 #+begin_src conf-space
