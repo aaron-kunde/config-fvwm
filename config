@@ -170,6 +170,7 @@ Style * IconBox 0 0 -0 -0,\
 Style Emacs IconOverride, Icon /usr/share/icons/hicolor/scalable/apps/emacs.svg
 
 
+Style * ResizeOpaque
 
 Style steam !Title
 

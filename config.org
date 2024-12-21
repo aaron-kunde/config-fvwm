@@ -357,6 +357,12 @@ Setting the icons and styles for specific applications:
   Style Emacs IconOverride, Icon /usr/share/icons/hicolor/scalable/apps/emacs.svg
 #+end_src
 
+** Resizing
+Resize windows with visible content:
+#+begin_src conf-space
+  Style * ResizeOpaque
+#+end_src
+
 #+begin_src conf-space
 #+end_src
 
