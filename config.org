@@ -229,7 +229,7 @@ Alternatively the combination /M-Tab/ is deactivated and remapped to /Super_L-Ta
 Add buttons to window title for (un-)maximize and (de-)iconify windows:
 #+begin_src conf-space
   Mouse 1 1 A Menu MenuWindowOps Delete
-  Mouse 1 2 A Maximize
+  Mouse 1 2 A Maximize-and-Raise
   Mouse 1 4 A Iconify
 #+end_src
 
