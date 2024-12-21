@@ -360,10 +360,9 @@ Use style /MwmButtons/ to have maximized windows display a different button as b
 #+end_src
 
 ** Borders
-Do not show handles and reduce set the border width to 2 pixels:
+Set the border width to 2 pixels:
 #+begin_src conf-space
-  Style * !Handles
-  Style * BorderWidth 2
+  Style * HandleWidth 2
 #+end_src
 
 ** Icons

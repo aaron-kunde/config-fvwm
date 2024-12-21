@@ -166,8 +166,7 @@ Style steam !Title
 
 Style * MwmButtons
 
-Style * !Handles
-Style * BorderWidth 2
+Style * HandleWidth 2
 
 Style * IconSize 64 64
 
