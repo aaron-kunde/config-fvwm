@@ -359,11 +359,13 @@ The pager is styled as follows:
 2. Stickiness accross all pages and desks
 3. Not appearing in the *WindowList*
 4. Not being iconifiable, to prevent being iconified e.g by pressing /Super_L+D/
+5. Make the position fixed, to prevent relocation
 #+begin_src conf-space
   Style FvwmPager !Title, !Borders, !Handles,\
 	Sticky,\
 	WindowListSkip,\
-	!Iconifiable
+	!Iconifiable,\
+	FixedPosition
 #+end_src
 
 ** Configuration

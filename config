@@ -167,7 +167,8 @@ Style steam !Title
 Style FvwmPager !Title, !Borders, !Handles,\
       Sticky,\
       WindowListSkip,\
-      !Iconifiable
+      !Iconifiable,\
+      FixedPosition
 
 DestroyModuleConfig FvwmPager:*
 *FvwmPager: Geometry -0+0
