@@ -158,6 +158,10 @@ MenuStyle * TrianglesSolid, TrianglesUseFore
 
 MenuStyle * ItemFormat "%.5|%5.i%5.5l%.5>%5.|"
 
+Style * SloppyFocus
+
+Style JDownloader* FPLenient
+
 Style * IconSize 64 64
 Style * IconBox 0 0 -0 -0,\
       IconGrid 90 100,\
@@ -165,9 +169,7 @@ Style * IconBox 0 0 -0 -0,\
 
 Style Emacs IconOverride, Icon /usr/share/icons/hicolor/scalable/apps/emacs.svg
 
-Style * SloppyFocus
 
-Style JDownloader* FPLenient
 
 Style steam !Title
 

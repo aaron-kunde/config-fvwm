@@ -331,6 +331,18 @@ Menus have no side picture, so no definition for this is necessary. The hilighte
   MenuStyle * ItemFormat "%.5|%5.i%5.5l%.5>%5.|"
 #+end_src
 
+** Focus policy
+Windows should keep the focus until the mouse pointer hits another window and not the root window:
+#+begin_src conf-space
+  Style * SloppyFocus
+#+end_src
+
+*** JDownloader
+/JDownloader/ sets the WM hint property ~input=false~, but does not take the focus, if it is selected via /WindowList/ from another page. To fix this, /JDownloader/ windows are given the lenient focus style:
+#+begin_src conf-space
+  Style JDownloader* FPLenient
+#+end_src
+
 ** Icons
 Create an icon box from top left to bottom right of the screen. The grid has a size of 80x100 to hold icons of the size 64x64 and the current icon size of an active icon of /xterm/:
 #+begin_src conf-space
@@ -345,16 +357,9 @@ Setting the icons and styles for specific applications:
   Style Emacs IconOverride, Icon /usr/share/icons/hicolor/scalable/apps/emacs.svg
 #+end_src
 
-** Focus policy
-Windows should keep the focus until the mouse pointer hits another window and not the root window:
 #+begin_src conf-space
-  Style * SloppyFocus
 #+end_src
 
-*** JDownloader
-/JDownloader/ sets the WM hint property ~input=false~, but does not take the focus, if it is selected via /WindowList/ from another page. To fix this, /JDownloader/ windows are given the lenient focus style:
-#+begin_src conf-space
-  Style JDownloader* FPLenient
 #+end_src
 
 ** Title bar
