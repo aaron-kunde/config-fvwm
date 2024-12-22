@@ -393,6 +393,12 @@ Setting the icons and styles for specific applications:
   Style Emacs IconOverride, Icon /usr/share/icons/hicolor/scalable/apps/emacs.svg
 #+end_src
 
+** Movement
+Always move windows with visible content:
+#+begin_src conf-space
+  OpaqueMoveSize unlimited
+#+end_src
+
 ** Resizing
 Resize windows with visible content:
 #+begin_src conf-space

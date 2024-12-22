@@ -180,6 +180,8 @@ Style * IconBackgroundRelief 0
 
 Style Emacs IconOverride, Icon /usr/share/icons/hicolor/scalable/apps/emacs.svg
 
+OpaqueMoveSize unlimited
+
 Style * ResizeOpaque
 
 Style FvwmPager !Title, !Borders, !Handles
