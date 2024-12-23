@@ -79,11 +79,11 @@ Both functions are configured to (de-)activate /DP-1/, if a monitor is connected
 *Note*: After FVWM has been (re)started and a monitor is connected the first time, neither /RandRFunc/ is executed nor /FvwmEvent/ events are fired. Therefore /ActivateMonitor/ has to be executed manually once. After that, the automatic (de-)activation of /DP-1/ works.
 
 * Initialization
-Set a background image on initialization:
+Set a background image on initialization. The parameter ~r~ is used to support transparency simulation:
 #+begin_src conf-space
   DestroyFunc InitFunction
   AddToFunc   InitFunction
-  + I Exec exec fvwm3-root \
+  + I Exec exec fvwm-root -r\
     ${FVWM_DATADIR}/default-config/images/background/bg3.png
 #+end_src
 
@@ -405,9 +405,49 @@ Resize windows with visible content:
   Style * ResizeOpaque
 #+end_src
 
+** Colorsets
+The colorset definitions are based on [[https://fvwm-themes.sourceforge.net/doc/colorsets][fvwm-themes]].
 
+Inactive titles have a grey (~#bebebe~) foreground and a very dark grey (~#404040~) background color. Active titles have a white (~#ffffff~) foreground and a steel blue (~#4682b4~) background color. Both use transparency and are tinted with 50% of the respective background color:
+#+begin_src conf-space
+  Colorset 1 fg Grey, bg Grey25, RootTransparent, Tint Grey25 50
+  Colorset 2 fg White, bg SteelBlue, RootTransparent, Tint SteelBlue 50
 #+end_src
 
+Borders use the same foreground and background colors as the titles. Instead of transparency they use a diagonal color gradient from their background colors to black (~#000000~):
+#+begin_src conf-space
+  Colorset 3 fg Grey, bg Grey25, DGradient 64 Grey25 Black
+  Colorset 4 fg White, bg SteelBlue, DGradient 64 SteelBlue Black
+#+end_src
+
+** Window Styles
+In general, colorset 1 is used as default (inactive) and colorset 2 for hilighted active items. This is necessary for title or icon texts:
+#+begin_src conf-space
+  Style * Colorset 1, HilightColorset 2
+#+end_src
+
+*** Title styles
+The title of inactive windows use colorset 1, while titles of active windows use colorset 2. All titles are flat and have no reliefs:
+#+begin_src conf-space
+  TitleStyle Inactive Colorset 1
+  TitleStyle Active Colorset 2
+  TitleStyle -- Flat
+#+end_src
+
+*** Border styles
+Borders of inactive windows use colorset 3, while active borders use colorset 4. Like titles, are all borders flat and have no reliefs:
+#+begin_src conf-space
+  BorderStyle Inactive Colorset 3
+  BorderStyle Active Colorset 4
+  BorderStyle -- Flat
+#+end_src
+
+*** Button styles
+Buttons in general use the same style (colorsets) like titles. They are flat and have no reliefs as well. Button 1 shows the mini icon of the current application, if defined:
+#+begin_src conf-space
+  ButtonStyle 1 MiniIcon
+  ButtonStyle All -- UseTitleStyle Flat
+#+end_src
 
 #+end_src
 

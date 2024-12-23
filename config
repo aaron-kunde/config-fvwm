@@ -18,7 +18,7 @@ AddToFunc DeactivateMonitor
 
 DestroyFunc InitFunction
 AddToFunc   InitFunction
-+ I Exec exec fvwm3-root \
++ I Exec exec fvwm-root -r\
   ${FVWM_DATADIR}/default-config/images/background/bg3.png
 
 DestroyFunc StartFunction
@@ -183,6 +183,25 @@ Style Emacs IconOverride, Icon /usr/share/icons/hicolor/scalable/apps/emacs.svg
 OpaqueMoveSize unlimited
 
 Style * ResizeOpaque
+
+Colorset 1 fg Grey, bg Grey25, RootTransparent, Tint Grey25 50
+Colorset 2 fg White, bg SteelBlue, RootTransparent, Tint SteelBlue 50
+
+Colorset 3 fg Grey, bg Grey25, DGradient 64 Grey25 Black
+Colorset 4 fg White, bg SteelBlue, DGradient 64 SteelBlue Black
+
+Style * Colorset 1, HilightColorset 2
+
+TitleStyle Inactive Colorset 1
+TitleStyle Active Colorset 2
+TitleStyle -- Flat
+
+BorderStyle Inactive Colorset 3
+BorderStyle Active Colorset 4
+BorderStyle -- Flat
+
+ButtonStyle 1 MiniIcon
+ButtonStyle All -- UseTitleStyle Flat
 
 Style FvwmPager !Title, !Borders, !Handles
 Style FvwmPager Sticky
