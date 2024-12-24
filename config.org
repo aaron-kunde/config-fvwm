@@ -421,7 +421,7 @@ Borders use the same foreground and background colors as the titles. Instead of 
 #+end_src
 
 ** Window Styles
-In general, colorset 1 is used as default (inactive) and colorset 2 for hilighted active items. This is necessary for title or icon texts:
+In general, colorset 1 is used as default for inactive items. Colorset 2 is used for hilighted active items. This is necessary for title or icon texts:
 #+begin_src conf-space
   Style * Colorset 1, HilightColorset 2
 #+end_src
@@ -443,12 +443,42 @@ Borders of inactive windows use colorset 3, while active borders use colorset 4.
 #+end_src
 
 *** Button styles
-Buttons in general use the same style (colorsets) like titles. They are flat and have no reliefs as well. Button 1 shows the mini icon of the current application, if defined:
+Buttons use the same colorsets as titles. They are flat and have no reliefs as well:
 #+begin_src conf-space
-  ButtonStyle 1 MiniIcon
-  ButtonStyle All -- UseTitleStyle Flat
+  ButtonStyle All AllInactive Colorset 1
+  ButtonStyle All AllActive Colorset 2
+  ButtonStyle All -- Flat
 #+end_src
 
+Button 1 shows the mini icon of the current application, if defined:
+#+begin_src conf-space
+  AddButtonStyle 1 MiniIcon
+#+end_src
+
+Button 2 changes, whether the window is maximized or not:
+#+begin_src conf-space
+  AddButtonStyle 2 AllNormal Vector 8 30x50@3 30x70@3 50x70@3 30x50@3 70x50@4 \
+		 50x30@3 70x30@3 70x50@3
+  AddButtonStyle 2 AllToggled Vector 8 40x60@3 40x80@3 20x60@3 40x60@3 60x40@4 \
+		 80x40@3 60x20@3 60x40@3
+#+end_src
+
+A little more complex design for button 4 would be:
+#+begin_src conf-space :tangle no
+  AddButtonStyle 2 AllToggled Vector 8 60x70@1 80x70@1 80x20@1 20x20@0 20x70@0 \
+		 60x70@1 60x40@3 20x40@3
+  AddButtonStyle 2 AllNormal Vector 9 60x70@3 80x70@3 80x20@3 20x20@3 20x40@3 \
+		 20x70@1 60x70@1 60x40@0 20x40@0
+#+end_src
+
+Button 4 shows a triangle upside down:
+#+begin_src conf-space
+  AddButtonStyle 4 Vector 4 30x30@3 70x30@3 50x70@3 30x30@3
+#+end_src
+
+An alternate design would be a little square in the bottom left corner:
+#+begin_src conf-space :tangle no
+  AddButtonStyle 4 Vector 5 30x70@3 50x70@3 50x50@3 30x50@3 30x70@3
 #+end_src
 
 * FvwmPager

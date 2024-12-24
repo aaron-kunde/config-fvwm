@@ -200,8 +200,18 @@ BorderStyle Inactive Colorset 3
 BorderStyle Active Colorset 4
 BorderStyle -- Flat
 
-ButtonStyle 1 MiniIcon
-ButtonStyle All -- UseTitleStyle Flat
+ButtonStyle All AllInactive Colorset 1
+ButtonStyle All AllActive Colorset 2
+ButtonStyle All -- Flat
+
+AddButtonStyle 1 MiniIcon
+
+AddButtonStyle 2 AllNormal Vector 8 30x50@3 30x70@3 50x70@3 30x50@3 70x50@4 \
+	       50x30@3 70x30@3 70x50@3
+AddButtonStyle 2 AllToggled Vector 8 40x60@3 40x80@3 20x60@3 40x60@3 60x40@4 \
+	       80x40@3 60x20@3 60x40@3
+
+AddButtonStyle 4 Vector 4 30x30@3 70x30@3 50x70@3 30x30@3
 
 Style FvwmPager !Title, !Borders, !Handles
 Style FvwmPager Sticky
