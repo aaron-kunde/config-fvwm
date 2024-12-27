@@ -149,15 +149,6 @@ AddToMenu   MenuSendToPage
  + "$[gt.Page] &8 (1,2)" MoveToPage 1 2
  + "$[gt.Page] &9 (2,2)" MoveToPage 2 2
 
-MenuStyle * Translucent 75
-MenuStyle * Borderwidth 0, Hilight3dOff
-MenuStyle * ActiveFore, HilightBack
-MenuStyle * !HilightTitleBack
-MenuStyle * Animation
-MenuStyle * TrianglesSolid, TrianglesUseFore
-
-MenuStyle * ItemFormat "%.5|%5.i%5.5l%.5>%5.|"
-
 Style * SloppyFocus
 
 Style JDownloader* FPLenient
@@ -184,11 +175,15 @@ OpaqueMoveSize unlimited
 
 Style * ResizeOpaque
 
-Colorset 1 fg Grey, bg Grey25, RootTransparent, Tint Grey25 50
-Colorset 2 fg White, bg SteelBlue, RootTransparent, Tint SteelBlue 50
+Colorset 1 fg Grey, bg Grey25, RootTransparent, Tint Grey25 50, NoShape
+Colorset 2 fg White, bg SteelBlue, RootTransparent, Tint SteelBlue 50, NoShape
 
-Colorset 3 fg Grey, bg Grey25, DGradient 64 Grey25 Black
-Colorset 4 fg White, bg SteelBlue, DGradient 64 SteelBlue Black
+Colorset 3 fg Grey, bg Grey25, DGradient 64 Grey25 Black, NoShape
+Colorset 4 fg White, bg SteelBlue, DGradient 64 SteelBlue Black, NoShape
+
+Colorset 5 fg white, bg SteelBlue, bgTint Black 50, Plain, NoShape
+Colorset 6 fg White, bg SteelBlue, Plain, NoShape
+Colorset 7 fg White, bg SteelBlue, fgTint Black 50, Plain, NoShape
 
 Style * Colorset 1, HilightColorset 2
 
@@ -212,6 +207,18 @@ AddButtonStyle 2 AllToggled Vector 8 40x60@3 40x80@3 20x60@3 40x60@3 60x40@4 \
 	       80x40@3 60x20@3 60x40@3
 
 AddButtonStyle 4 Vector 4 30x30@3 70x30@3 50x70@3 30x30@3
+
+MenuStyle * MenuColorset 5
+MenuStyle * ActiveColorset 6
+MenuStyle * TitleColorset 7
+MenuStyle * Translucent 85
+MenuStyle * BorderWidth 0, Hilight3DOff
+MenuStyle * HilightBack
+MenuStyle * Animation
+MenuStyle * TrianglesSolid
+MenuStyle * SeparatorsLong
+
+MenuStyle * ItemFormat "%.5|%5.i%5.5l%.5>%5.|"
 
 Style FvwmPager !Title, !Borders, !Handles
 Style FvwmPager Sticky
