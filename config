@@ -231,4 +231,10 @@ DestroyModuleConfig FvwmPager:*
 *FvwmPager: Font None
 *FvwmPager: MiniIcons
 *FvwmPager: Balloons Pager
+*FvwmPager: BalloonBorderWidth 0
 *FvwmPager: UseSkipList
+
+*FvwmPager: Colorset * 1
+*FvwmPager: HilightColorset * 2
+*FvwmPager: WindowColorsets 3 4
+*FvwmPager: BalloonColorset * 5

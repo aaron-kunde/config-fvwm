@@ -517,13 +517,23 @@ The pager is configured as follows
 2. Do not show desktop labels
 3. Show mini icons of windows
 4. Ballons are shown for un-iconified pager
-5. Do not show windows using the style /WindowListSkip/
+5. Ballons have no border
+6. Do not show windows using the style /WindowListSkip/
 #+begin_src conf-space
   DestroyModuleConfig FvwmPager:*
   ,*FvwmPager: Geometry -0+0
   ,*FvwmPager: Font None
   ,*FvwmPager: MiniIcons
   ,*FvwmPager: Balloons Pager
+  ,*FvwmPager: BalloonBorderWidth 0
   ,*FvwmPager: UseSkipList
 #+end_src
 
+** Colors
+The default colorset is colorset 1, which uses the transparent grey background of the pager, like inactive window titles. The active desktop is hilighted with colorset 2 like active window titles. Window whithin the pager use the same colorsets as the borders for acitve and inactive windows. Balloon texts use the same colorset like active menuitems:
+#+begin_src conf-space
+  ,*FvwmPager: Colorset * 1
+  ,*FvwmPager: HilightColorset * 2
+  ,*FvwmPager: WindowColorsets 3 4
+  ,*FvwmPager: BalloonColorset * 5
+#+end_src
