@@ -16,7 +16,7 @@ Enable changing the viewport by hitting the edges with the mouse:
 
 * RandR Support
 
-** (De-)Activation of (Dis-)connected monitors
+** (De-)Activation of (dis-)connected monitors
 After a monitor is connected, its status can be verifed by executing:
 #+begin_src shell :results verbatim :wrap example
   xrandr | grep DP
@@ -42,7 +42,7 @@ This leads to
 
 Disconnecing a monitor leads to
 1. Executing of /RandRFunc/
-2. Firing FvwmEvent the event /monitor_disabled/
+2. Firing /FvwmEvent/ the event /monitor_disabled/
 
 After a monitor has been disconnected, it has to be deactivated, by executing:
 #+begin_src shell :results none
@@ -52,7 +52,7 @@ After a monitor has been disconnected, it has to be deactivated, by executing:
 *Note*: Deactivating a monitor does not fire any /FvwmEvent/ events, as long as it is still connected. The function /RandRFunc/ and the event /monitor_disabled/ only comes into effect when the monitor has been disconnected. 
 
 Two functions are added:
-1. Activate a monitor as primary monitor:
+1. Activate a monitor as primary monitor. The monitor to activate is the first parameter of the function:
    #+begin_src conf-space
      DestroyFunc ActivateMonitor
      AddToFunc ActivateMonitor
@@ -61,7 +61,7 @@ Two functions are added:
 
    The activated monitor is set as primary monitor, so desktop resolution and /FvwmPager/ can be adjusted, by restarting FVWM.
 
-2. Deactivate a monitor and make the standard monitor the primary monitor again:
+2. Deactivate a monitor and make the standard monitor (/eDP-1/) the primary monitor again. The monitor to deactivate is the first parameter of the function:
    #+begin_src conf-space
      DestroyFunc DeactivateMonitor
      AddToFunc DeactivateMonitor
@@ -79,7 +79,7 @@ Both functions are configured to (de-)activate /DP-1/, if a monitor is connected
 *Note*: After FVWM has been (re)started and a monitor is connected the first time, neither /RandRFunc/ is executed nor /FvwmEvent/ events are fired. Therefore /ActivateMonitor/ has to be executed manually once. After that, the automatic (de-)activation of /DP-1/ works.
 
 * Initialization
-Set a background image on initialization. The parameter ~r~ is used to support transparency simulation:
+A background image is set once during initialization. The parameter ~-r~ is used to support transparency simulation:
 #+begin_src conf-space
   DestroyFunc InitFunction
   AddToFunc   InitFunction
@@ -110,22 +110,21 @@ Invoke the [[* Root menu][root menu]] with /Super_L+F1/
 #+end_src
 
 ** Enable brightness control
-After installing ~brightnessctl~ and ~brightness-udev~, use these keybindings to increase or decrease the screen brightnesss with the respecting keys:
+After installing ~brightnessctl~ and ~brightness-udev~, use the respecting keys function keys to increase or decrease the screen brightnesss:
 #+begin_src conf-space
   Key XF86MonBrightnessDown A A Exec exec brightnessctl s 10%-
   Key XF86MonBrightnessUp   A A Exec exec brightnessctl s 10%+
 #+end_src
 
 ** Enable audio controls
-After installing ~pulseaudio-utils~, use the following keybindings for the respecting multimedia key:
-
-(Un-)mute audio playback:
+After installing /pulseaudio-utils/, use the respecting multimedia keys:
+- (Un-)mute audio playback:
 #+begin_src conf-space
   Key XF86AudioMute A A Exec exec pactl set-sink-mute \
       $(pactl get-default-sink) toggle
 #+end_src
 
-Raise and lower playback volume:
+- Raise and lower playback volume:
 #+begin_src conf-space
   Key XF86AudioLowerVolume A A Exec exec pactl set-sink-volume \
       $(pactl get-default-sink) -10%
@@ -133,7 +132,7 @@ Raise and lower playback volume:
       $(pactl get-default-sink) +10%
 #+end_src
 
-(Un-)mute the microphone:
+- (Un-)mute the microphone:
 #+begin_src conf-space
   Key XF86AudioMicMute A A Exec exec pactl set-source-mute \
       $(pactl get-default-source) toggle
@@ -153,45 +152,7 @@ Page navigation is done with the Numpad arrow keys or /H/, /J/, /K/ and /L/ whil
 #+end_src
 
 ** Window controls
-Opens the [[* Menu for window operations][menu for window operations]] on the current window with /Super_L+O/:
-#+begin_src conf-space
-  Key O A 4 Menu MenuWindowOps
-#+end_src
-
-Opens the [[* Menu for sending windows to pages][menu for sending windows to pages]] on the current window with /Super_L+P/:
-#+begin_src conf-space
-  Key P A 4 Menu MenuWindowOps
-#+end_src
-
-Move the current window with /Super_L+M/:
-#+begin_src conf-space
-  Key M A 4 Move
-#+end_src
-
-Move the current window in an animated way in a give direction with /Super_L+Shift+<Arrow-Key>/ until it hits another window or a screen boundary:
-#+begin_src conf-space
-  Key Up A 4S AnimatedMove shuffle Up
-  Key Down A 4S AnimatedMove shuffle Down
-  Key Left A 4S AnimatedMove shuffle Left
-  Key Right A 4S AnimatedMove shuffle Right
-#+end_src
-
-Resize the current window with /Super_L+G/:
-#+begin_src conf-space
-  Key G A 4 Resize
-#+end_src
-
-Iconifies or deiconifies the current window with /Super_L+Down/:
-#+begin_src conf-space
-  Key Down A 4 Iconify
-#+end_src
-
-Iconifies all iconifiable windows on the current page with /Super_L+D/:
-#+begin_src conf-space
-  Key D A 4 All (Iconifiable, CurrentPage) Iconify True
-#+end_src
-
-Maximized windows should also be raised, to have them not maximized behind other windows of the same layer:
+Maximized windows should also be raised, to have them not maximized behind other windows of the same layer. Therefore the following function is defined:
 #+begin_src conf-space
   DestroyFunc Maximize-and-Raise
   AddToFunc Maximize-and-Raise
@@ -199,17 +160,56 @@ Maximized windows should also be raised, to have them not maximized behind other
   + I Raise
 #+end_src
 
-Maximizes or unmaximizes the current window with /Super_L+Up/:
+All window controlling is done, using the modifcator for /Super_L/:
+- Open the [[* Menu for window operations][menu for window operations]] on the current window with /Super_L+O/:
+#+begin_src conf-space
+  Key O A 4 Menu MenuWindowOps
+#+end_src
+
+- Open the [[* Menu for sending windows to pages][menu for sending windows to pages]] on the current window with /Super_L+P/:
+#+begin_src conf-space
+  Key P A 4 Menu MenuWindowOps
+#+end_src
+
+- Move the current window with /Super_L+M/:
+#+begin_src conf-space
+  Key M A 4 Move
+#+end_src
+
+- Move the current window in an animated way in a give direction with /Super_L+Shift+<Arrow-Key>/ until it hits another window or a screen boundary:
+#+begin_src conf-space
+  Key Up A 4S AnimatedMove shuffle Up
+  Key Down A 4S AnimatedMove shuffle Down
+  Key Left A 4S AnimatedMove shuffle Left
+  Key Right A 4S AnimatedMove shuffle Right
+#+end_src
+
+- Resize the current window with /Super_L+G/:
+#+begin_src conf-space
+  Key G A 4 Resize
+#+end_src
+
+- Iconifies or deiconifies the current window with /Super_L+Down/:
+#+begin_src conf-space
+  Key Down A 4 Iconify
+#+end_src
+
+- Iconifies all iconifiable windows on the current page with /Super_L+D/:
+#+begin_src conf-space
+  Key D A 4 All (Iconifiable, CurrentPage) Iconify True
+#+end_src
+
+- Maximizes or unmaximizes the current window with /Super_L+Up/:
 #+begin_src conf-space
   Key Up A 4 Maximize-and-Raise
 #+end_src
 
-Raise the current window in its layer with /Super_L+R/:
+- Raise the current window in its layer with /Super_L+R/:
 #+begin_src conf-space
   Key R A 4 Raise
 #+end_src
 
-Stick or unstick the current window with /Super_L+G/:
+- Stick or unstick the current window with /Super_L+G/:
 #+begin_src conf-space
   Key S A 4 Stick
 #+end_src
@@ -219,7 +219,7 @@ Stick or unstick the current window with /Super_L+G/:
 ** Deactivate M-Tab for mc
 Some programms, like Midnight Commander use the combination /M-Tab/. Passing synthetic events to ~xterm~ like it is described on the [[https://www.fvwm.org/Man/fvwm3commands/#_mouse_key_bindings][FVWM3 man page]] leads to further problems and is therefore not the ideal way.
 
-Alternatively the combination /M-Tab/ is deactivated and remapped to /Super_L-Tab/. Furthermore the: 
+So the combination /M-Tab/ is deactivated and remapped to /Super_L-Tab/:
 #+begin_src conf-space
   Key Tab A M -
   Key Tab A 4 WindowList Root c c NoGeometry, SelectOnRelease Super_L
@@ -241,7 +241,17 @@ Deiconify iconified windows with a mouse click:
 * Menus
 
 ** Root menu
-Definition of the root menu:
+The definition of the root menu with the following items:
+1. An entry for the [[* /freedesktop.org/ menu][/freedesktop.org/ menu]]
+2. Open the default terminal
+3. Open the /FvwmConsole/
+4. Open the dialog to copy and apply the default configuration
+5. Activating the secondary Monitor /DP-1/
+6. Deactivating the secondary Monitor /DP-1/
+7. Redraw all windows on the screen
+8. Restart /FVWM/
+9. Quit /FVWM/
+10. Hibernate the computer
 #+begin_src conf-space
   DestroyMenu MenuFvwmRoot
   AddToMenu   MenuFvwmRoot "Fvwm" Title
@@ -264,13 +274,29 @@ Definition of the root menu:
 #+end_src
 
 *** /freedesktop.org/ menu
-Generate the /freedesktop.org/ menu with mini icons, which is used in the root menu:
+The /freedesktop.org/ menu, which is used in the root menu is generated with the following command:
 #+begin_src conf-space
   PipeRead "fvwm3-menu-desktop -e --enable-mini-icons"
 #+end_src
 
 ** Menu for window operations
-Adding a menu with several window operations:
+Adding a menu with several window operations on the current window:
+1. Identifiy the window
+2. Move the window
+3. Send the window to a different page
+4. Resize the window
+5. Iconfy or deiconify the window
+6. Maximize or unmaximize and raise the window in the current layer
+7. Raise the window in the current layer
+8. Lower the window in the current layer
+9. Move the window into the "top" layer
+10. Move the window into the "default" layer
+11. Move the window into the "bottom" layer
+12. Switch a window between sticky and unsticky
+13. Shade or unshade the window
+14. Redraw the window
+15. Close the window gracefully
+16. Delete the window
 #+begin_src conf-space
   DestroyMenu MenuWindowOps
   AddToMenu   MenuWindowOps
@@ -474,8 +500,16 @@ An alternate design would be a little square in the bottom left corner:
 #+end_src
 
 ** Menu Styles
-Menus use colorset 5 as their base colorset and colorset 6 for active menu items. Titles are treated like greyed menu items and use colorset 7.
-In general, menus have a pseudo transparent background of 85%. They have no 3D borders and no 3D hilighting. The background of the selected menu item is hilighted using the /ActiveColorset/. Hilighted items use the same forground color as active not hilighted items. The title is not hilighted. Submenus are shifted in an animated way. The triangles for submenus are solid and use the background color. The long version of separators, spannging the whole menu area, are used:
+Menus have the following style:
+1. Menus use colorset 5 as their base colorset.
+2. Colorset 6 is used for active menu items.
+3. Titles are treated like greyed menu items and use colorset 7.
+4. In general, menus have a pseudo transparent background of 85%.
+5. Menus have no 3D borders and no 3D hilighting.
+6. The background of the selected menu item is hilighted using the /ActiveColorset/. Hilighted items use the same forground color as active not hilighted items. The title is not hilighted.
+7. Submenus are shifted in an animated way.
+8. The triangles for submenus are solid and use the background color.
+9. Long separators are used, spannging the whole menu area.
 #+begin_src conf-space
   MenuStyle * MenuColorset 5
   MenuStyle * ActiveColorset 6
@@ -530,7 +564,11 @@ The pager is configured as follows
 #+end_src
 
 ** Colors
-The default colorset is colorset 1, which uses the transparent grey background of the pager, like inactive window titles. The active desktop is hilighted with colorset 2 like active window titles. Window whithin the pager use the same colorsets as the borders for acitve and inactive windows. Balloon texts use the same colorset like active menuitems:
+/FvwmPager/ uses the following colors:
+1. The default colorset is colorset 1, which uses the transparent grey background of the pager, like inactive window titles.
+2. The active desktop is hilighted with colorset 2 like active window titles.
+3. Windows whithin the pager use the same colorsets as the borders for acitve and inactive windows.
+4. Balloon texts use the same colorset like active menuitems.
 #+begin_src conf-space
   ,*FvwmPager: Colorset * 1
   ,*FvwmPager: HilightColorset * 2
