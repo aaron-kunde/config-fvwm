@@ -358,9 +358,9 @@ Windows should keep the focus until the mouse pointer hits another window and no
 ** Window title
 
 *** No Ttitle for Steam applications
-Windows with class /steam/ do not need a title bar because they have their own:
+Windows starting with class /steam/ (Steam itself and its apps, like games) should not have a title bar because they either have their own controls or it irritates while playing:
 #+begin_src conf-space
-  Style steam !Title
+  Style steam* !Title
 #+end_src
 
 ** Title buttons
