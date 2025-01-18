@@ -84,6 +84,14 @@ Key S A 4 Stick
 Key Tab A M -
 Key Tab A 4 WindowList Root c c NoGeometry, SelectOnRelease Super_L
 
+Key K A 4C Exec exec kodi
+
+Key E A 4C Exec exec emacs
+
+Key B A 4C Exec exec x-www-browser
+
+Key M A 4C Exec exec thunderbird
+
 Mouse 1 1 A Menu MenuWindowOps Delete
 Mouse 1 2 A Maximize-and-Raise
 Mouse 1 4 A Iconify
