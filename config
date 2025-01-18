@@ -163,6 +163,10 @@ Style JDownloader* FPLenient
 
 Style steam* !Title
 
+Style epicgameslauncher.exe !Title
+
+Style brotato.exe !Title
+
 Style * MwmButtons
 
 Style * HandleWidth 2

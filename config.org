@@ -380,10 +380,22 @@ Windows should keep the focus until the mouse pointer hits another window and no
 
 ** Window title
 
-*** No Ttitle for Steam applications
+*** No title for Steam applications
 Windows starting with class /steam/ (Steam itself and its apps, like games) should not have a title bar because they either have their own controls or it irritates while playing:
 #+begin_src conf-space
   Style steam* !Title
+#+end_src
+
+*** No title for Epic Games Launcher
+#+begin_src conf-space
+  Style epicgameslauncher.exe !Title
+#+end_src
+
+Deactivate titles for installed games:
+
+- Brotato
+#+begin_src conf-space
+  Style brotato.exe !Title
 #+end_src
 
 ** Title buttons

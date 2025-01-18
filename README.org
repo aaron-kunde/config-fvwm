@@ -12,6 +12,7 @@ To use the configuration file properly:
    #+begin_src shell
      mv -i ~/.fvwm/config ~/.fvwm/config.bak
    #+end_src
+
 2. Copy the checked out config file to the ~$FVWM_USERDIR~:
    #+begin_src shell
      cp config ~/.fvwm/
