@@ -193,7 +193,7 @@ Colorset 2 fg White, bg SteelBlue, RootTransparent, Tint SteelBlue 50, NoShape
 Colorset 3 fg Grey, bg Grey25, DGradient 64 Grey25 Black, NoShape
 Colorset 4 fg White, bg SteelBlue, DGradient 64 SteelBlue Black, NoShape
 
-Colorset 5 fg white, bg SteelBlue, bgTint Black 50, Plain, NoShape
+Colorset 5 fg White, bg SteelBlue, bgTint Black 50, Plain, NoShape
 Colorset 6 fg White, bg SteelBlue, Plain, NoShape
 Colorset 7 fg White, bg SteelBlue, fgTint Black 50, Plain, NoShape
 

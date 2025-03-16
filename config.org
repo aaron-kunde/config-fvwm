@@ -468,7 +468,7 @@ Borders use the same foreground and background colors as the titles. Instead of 
 
 In general menus use the same background and foreground colors like active window titles. The backgorund color is tinted with 50% black to have a better contrast. Hilighted (selected) menuitems use the same colors but without the tinted background color. Greyed menu items and the titles have the same colors as the menu, but with a 50% black tinted forground color:
 #+begin_src conf-space
-  Colorset 5 fg white, bg SteelBlue, bgTint Black 50, Plain, NoShape
+  Colorset 5 fg White, bg SteelBlue, bgTint Black 50, Plain, NoShape
   Colorset 6 fg White, bg SteelBlue, Plain, NoShape
   Colorset 7 fg White, bg SteelBlue, fgTint Black 50, Plain, NoShape
 #+end_src
