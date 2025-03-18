@@ -228,10 +228,15 @@ So the combination /M-Tab/ is deactivated and remapped to /Super_L-Tab/:
 ** Shortcuts to open some favorite apps
 Add some key bindigs to open some apps:
 
-- Open Kodi with /Super_L+Ctrl+K/
-#+begin_src conf-space
-  Key K A 4C Exec exec kodi
-#+end_src
+- Open terminal with /Super_L+Ctrl+T/
+  #+begin_src conf-space
+    Key T A 4C Exec exec x-terminal-emulator
+  #+end_src
+
+- Open Kodi with /Super_L+Ctrl+K/:
+  #+begin_src conf-space
+    Key K A 4C Exec exec kodi
+  #+end_src
 
 - Open Emacs with /Super_L+Ctrl+E/:
 #+begin_src conf-space
