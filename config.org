@@ -239,14 +239,14 @@ Add some key bindigs to open some apps:
   #+end_src
 
 - Open Emacs with /Super_L+Ctrl+E/:
-#+begin_src conf-space
-  Key E A 4C Exec exec emacs
-#+end_src
+  #+begin_src conf-space
+    Key E A 4C Exec exec emacs
+  #+end_src
 
-- Open favorite Browser (Mozilla Firefox) with /Super_L+Ctrl+B/:
-#+begin_src conf-space
-  Key B A 4C Exec exec x-www-browser
-#+end_src
+- Open favorite web browser (Mozilla Firefox) with /Super_L+Ctrl+B/:
+  #+begin_src conf-space
+    Key B A 4C Exec exec x-www-browser
+  #+end_src
 
 - Open favorite mail client (Mozilla Thunderbird) with /Super_L+Ctrl+M/:
   #+begin_src conf-space
