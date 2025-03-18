@@ -249,9 +249,14 @@ Add some key bindigs to open some apps:
 #+end_src
 
 - Open favorite mail client (Mozilla Thunderbird) with /Super_L+Ctrl+M/:
-#+begin_src conf-space
-  Key M A 4C Exec exec thunderbird
-#+end_src
+  #+begin_src conf-space
+    Key M A 4C Exec exec thunderbird
+  #+end_src
+
+- Open JDownloader with /Super_L+Ctrl+J/:
+  #+begin_src conf-space
+    Key J A 4C Exec exec jd.sh
+  #+end_src
 
 * Mouse bindings
 Add buttons to window title for (un-)maximize and (de-)iconify windows:

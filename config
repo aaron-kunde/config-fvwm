@@ -94,6 +94,8 @@ Key B A 4C Exec exec x-www-browser
 
 Key M A 4C Exec exec thunderbird
 
+Key J A 4C Exec exec jd.sh
+
 Mouse 1 1 A Menu MenuWindowOps Delete
 Mouse 1 2 A Maximize-and-Raise
 Mouse 1 4 A Iconify
