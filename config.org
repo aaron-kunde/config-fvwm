@@ -87,12 +87,13 @@ A background image is set once during initialization. The parameter ~-r~ is used
     ${FVWM_DATADIR}/default-config/images/background/bg3.png
 #+end_src
 
-Start the modules /FvwmPager/ and /FvwmEvent/, on startups and restarts, after FVWM has read its config:
+Start the modules /FvwmPager/ and /FvwmEvent/, on startups and restarts, after FVWM has read its config. Also start [[https://github.com/brndnmtthws/conky][Conky]] to display some system information:
 #+begin_src conf-space
   DestroyFunc StartFunction
   AddToFunc   StartFunction
   + I Module FvwmPager
   + I Module FvwmEvent
+  + I Exec conky
 #+end_src
 
 * Fonts

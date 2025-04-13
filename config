@@ -25,6 +25,7 @@ DestroyFunc StartFunction
 AddToFunc   StartFunction
 + I Module FvwmPager
 + I Module FvwmEvent
++ I Exec conky
 
 DefaultFont "xft:Sans:antialias=True:size=10"
 
