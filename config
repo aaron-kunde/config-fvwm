@@ -18,14 +18,18 @@ AddToFunc DeactivateMonitor
 
 DestroyFunc InitFunction
 AddToFunc   InitFunction
-+ I Exec exec fvwm-root -r\
++ I Exec exec fvwm-root -r \
   ${FVWM_DATADIR}/default-config/images/background/bg3.png
++ I Exec conky
 
 DestroyFunc StartFunction
 AddToFunc   StartFunction
 + I Module FvwmPager
 + I Module FvwmEvent
-+ I Exec conky
+
+DestroyFunc RestartFunction
+AddToFunc   RestartFunction
++ I Exec killall -SIGUSR1 conky
 
 DefaultFont "xft:Sans:antialias=True:size=10"
 
