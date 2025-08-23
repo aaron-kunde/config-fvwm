@@ -437,8 +437,8 @@ Setting an absolute icon size of /64x6x/ pixels:
 Create an icon box from top left to bottom right of the screen. The grid has a size of 80x100 to hold icons of the size /64x64/ pixels and the current icon size of an active icon of /xterm/:
 #+begin_src conf-space
   Style * IconBox 0 0 -0 -0,\
-	IconGrid 90 100,\
-	IconFill top left
+          IconGrid 90 100,\
+  	IconFill top left
 #+end_src
 
 Make icon titles flat:

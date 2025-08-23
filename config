@@ -183,8 +183,8 @@ Style * HandleWidth 2
 Style * IconSize 64 64
 
 Style * IconBox 0 0 -0 -0,\
-      IconGrid 90 100,\
-      IconFill top left
+        IconGrid 90 100,\
+	IconFill top left
 
 Style * IconTitleRelief 0
 
@@ -223,9 +223,9 @@ ButtonStyle All -- Flat
 AddButtonStyle 1 MiniIcon
 
 AddButtonStyle 2 AllNormal Vector 8 30x50@3 30x70@3 50x70@3 30x50@3 70x50@4 \
-	       50x30@3 70x30@3 70x50@3
+		 50x30@3 70x30@3 70x50@3
 AddButtonStyle 2 AllToggled Vector 8 40x60@3 40x80@3 20x60@3 40x60@3 60x40@4 \
-	       80x40@3 60x20@3 60x40@3
+		 80x40@3 60x20@3 60x40@3
 
 AddButtonStyle 4 Vector 4 30x30@3 70x30@3 50x70@3 30x30@3
 
