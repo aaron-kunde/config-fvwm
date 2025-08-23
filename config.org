@@ -69,12 +69,14 @@ Two functions are added:
       + I Exec xrandr --output eDP-1 --primary
    #+end_src
 
-Both functions are configured to (de-)activate /DP-1/, if a monitor is connected:
-#+begin_src conf-space
+Both functions can be configured to (de-)activate /HDMI-1/ and /DP-1/, if a monitor is connected, but it seems not to be necessary, as long /eDP-1/ is not the primary monitor:
+#+begin_example conf-space
   ,*FvwmEvent: Cmd
+  ,*FvwmEvent: monitor_disabled "DeactivateMonitor HDMI-1"
   ,*FvwmEvent: monitor_disabled "DeactivateMonitor DP-1"
+  ,*FvwmEvent: monitor_enabled "ActivateMonitor HDMI-1"
   ,*FvwmEvent: monitor_enabled "ActivateMonitor DP-1"
-#+end_src
+#+end_example
 
 *Note*: After FVWM has been (re)started and a monitor is connected the first time, neither /RandRFunc/ is executed nor /FvwmEvent/ events are fired. Therefore /ActivateMonitor/ has to be executed manually once. After that, the automatic (de-)activation of /DP-1/ works.
 

@@ -12,10 +12,6 @@ AddToFunc DeactivateMonitor
  + I Exec xrandr --output $0 --off
  + I Exec xrandr --output eDP-1 --primary
 
-*FvwmEvent: Cmd
-*FvwmEvent: monitor_disabled "DeactivateMonitor DP-1"
-*FvwmEvent: monitor_enabled "ActivateMonitor DP-1"
-
 DestroyFunc InitFunction
 AddToFunc   InitFunction
 + I Exec exec fvwm-root -r \
