@@ -283,45 +283,6 @@ Deiconify iconified windows with a mouse click:
 
 * Menus
 
-** Root menu
-The definition of the root menu with the following items:
-1. An entry for the [[* /freedesktop.org/ menu][/freedesktop.org/ menu]]
-2. Open the default terminal
-3. Open the /FvwmConsole/
-4. Open the dialog to copy and apply the default configuration
-5. Activating the secondary Monitor /DP-1/
-6. Deactivating the secondary Monitor /DP-1/
-7. Redraw all windows on the screen
-8. Restart /FVWM/
-9. Quit /FVWM/
-10. Hibernate the computer
-#+begin_src conf-space
-  DestroyMenu MenuFvwmRoot
-  AddToMenu   MenuFvwmRoot "Fvwm" Title
-  + "$[gt.XDG &Menu]%icons/apps.png%"	Popup XDGMenu
-  + "&Terminal%icons/terminal.png%"	Exec exec x-terminal-emulator
-  + ""					Nop
-  + "Fvwm&Console%icons/terminal.png%"	Module FvwmConsole -terminal \
-    x-terminal-emulator
-  + "$[gt.Cop&y Config]%icons/conf.png%"	FvwmScript \
-    FvwmScript-ConfirmCopyConfig
-  + ""					Nop
-  + "&Activate DP-1%icons/run_arrow.png%" ActivateMonitor DP-1
-  + "&DeActivate DP-1"			DeActivateMonitor DP-1
-  + ""					Nop
-  + "$[gt.Re&fresh]%icons/refresh.png%"	Refresh
-  + "$[gt.&Restart]%icons/restart.png%"	Restart
-  + "$[gt.&Quit]%icons/quit.png%"		Module FvwmScript \
-    FvwmScript-ConfirmQuit
-  + "$[gt.&Hibernate]"			Exec exec systemctl hibernate
-#+end_src
-
-*** /freedesktop.org/ menu
-The /freedesktop.org/ menu, which is used in the root menu is generated with the following command:
-#+begin_src conf-space
-  PipeRead "fvwm3-menu-desktop -e --enable-mini-icons"
-#+end_src
-
 ** Menu for window operations
 Adding a menu with several window operations on the current window:
 1. Identifiy the window
@@ -382,6 +343,63 @@ The window operation menu above uses a submenu for sending windows to a specific
    + "$[gt.Page] &7 (0,2)" MoveToPage 0 2
    + "$[gt.Page] &8 (1,2)" MoveToPage 1 2
    + "$[gt.Page] &9 (2,2)" MoveToPage 2 2
+#+end_src
+
+** Root menu
+The definition of the root menu with the following items:
+1. An entry for the [[* /freedesktop.org/ menu][/freedesktop.org/ menu]]
+2. Open the default terminal
+3. Open the /FvwmConsole/
+4. Open the dialog to copy and apply the default configuration
+5. Activating a secondary Monitor, by opening a submenu with available monitors.
+6. Deactivating a secondary Monitor, by opening a submenur with available monitors.
+7. Redraw all windows on the screen
+8. Restart /FVWM/
+9. Quit /FVWM/
+10. Hibernate the computer
+#+begin_src conf-space
+  DestroyMenu MenuFvwmRoot
+  AddToMenu   MenuFvwmRoot "Fvwm" Title
+  + "$[gt.XDG &Menu]%icons/apps.png%"	Popup XDGMenu
+  + "&Terminal%icons/terminal.png%"	Exec exec x-terminal-emulator
+  + ""					Nop
+  + "Fvwm&Console%icons/terminal.png%"	Module FvwmConsole -terminal \
+    x-terminal-emulator
+  + "$[gt.Cop&y Config]%icons/conf.png%"	FvwmScript \
+    FvwmScript-ConfirmCopyConfig
+  + ""					Nop
+  + "&Activate Monitor" 			Popup MenuActivateMonitor
+  + "&DeActivate Monitor"			Popup MenuDeActivateMonitor
+  + ""					Nop
+  + "$[gt.Re&fresh]%icons/refresh.png%"	Refresh
+  + "$[gt.&Restart]%icons/restart.png%"	Restart
+  + "$[gt.&Quit]%icons/quit.png%"		Module FvwmScript \
+    FvwmScript-ConfirmQuit
+  + "$[gt.&Hibernate]"			Exec exec systemctl hibernate
+#+end_src
+
+** Menu for activating monitors
+The menu has an entry for each available monitor to activate it and make it the primary monitor:
+#+begin_src conf-space
+  DestroyMenu MenuActivateMonitor
+  AddToMenu   MenuActivateMonitor
+  + "Activate &DP-1" ActivateMonitor DP-1
+  + "Activate &HDMI-1" ActivateMonitor HDMI-1
+#+end_src
+
+** Menu for deactivating monitors
+The has an entry for each available monitor to deactivate it:
+#+begin_src conf-space
+  DestroyMenu MenuDeactivateMonitor
+  AddToMenu   MenuDeactivateMonitor
+  + "DeActivate &DP-1" DeactivateMonitor DP-1
+  + "DeActivate &HDMI-1" DeactivateMonitor HDMI-1
+#+end_src
+
+** /freedesktop.org/ menu
+The /freedesktop.org/ menu, which is used in the root menu is generated with the following command:
+#+begin_src conf-space
+  PipeRead "fvwm3-menu-desktop -e --enable-mini-icons"
 #+end_src
 
 * Style
