@@ -32,9 +32,9 @@ It should result in something like:
 #+end_example
 
 After connecting a new monitor, it has to be activated with:
-#+begin_src shell :results none
+#+begin_example
   xrandr --output DP-1 --auto
-#+end_src
+#+end_example
 
 This leads to
 1. Firing /FvwmEvent/ the event /monitor_enabled/
@@ -45,9 +45,9 @@ Disconnecing a monitor leads to
 2. Firing /FvwmEvent/ the event /monitor_disabled/
 
 After a monitor has been disconnected, it has to be deactivated, by executing:
-#+begin_src shell :results none
+#+begin_example
   xrandr --output DP-1 --off
-#+end_src
+#+end_example
 
 *Note*: Deactivating a monitor does not fire any /FvwmEvent/ events, as long as it is still connected. The function /RandRFunc/ and the event /monitor_disabled/ only comes into effect when the monitor has been disconnected. 
 
